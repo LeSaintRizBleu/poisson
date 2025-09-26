@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw3oha13r5c4k"]
+
+[ext_resource type="Script" uid="uid://dl88ocr0ln4e8" path="res://core/ui/popup/escape_pop_up.gd" id="1_aarwa"]
+
+[node name="EscapePopUp" type="CanvasLayer"]
+script = ExtResource("1_aarwa")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 100
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "The Fish Ecaped !"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Better luck next time !"
+
+[node name="Button" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Return To Map"
+
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

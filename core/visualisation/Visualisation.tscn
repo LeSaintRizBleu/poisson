@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqx33048x87lx"]
+
+[ext_resource type="Script" uid="uid://ltbon0l36c0b" path="res://core/visualisation/Visualisation.gd" id="1_br2wl"]
+[ext_resource type="Texture2D" uid="uid://c0fnd7kxo1lto" path="res://assets/backgrounds/underwater-fantasy-preview.png" id="2_kmy5b"]
+[ext_resource type="Shader" uid="uid://d0mjmb0u4jqmc" path="res://shader/water.gdshader" id="3_vwdde"]
+[ext_resource type="Shader" uid="uid://b4fdwrhrydc8u" path="res://shader/WaterReflection.gdshader" id="4_q6bfu"]
+[ext_resource type="PackedScene" uid="uid://3rgskf5ypkbr" path="res://core/ui/tankHUD/TankHUD.tscn" id="5_fcrf0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_elt1y"]
+shader = ExtResource("3_vwdde")
+shader_parameter/color = Color(0, 0.490196, 1, 1)
+shader_parameter/frequency = 3.0
+shader_parameter/speed = 0.2
+shader_parameter/amplitude = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_esu7a"]
+shader = ExtResource("4_q6bfu")
+shader_parameter/color = Color(0, 0.25, 1, 1)
+shader_parameter/frequency = 2.0
+shader_parameter/compress = 1.0
+shader_parameter/add_light = 0.0
+shader_parameter/scale = 0.8
+shader_parameter/speed = 0.15
+shader_parameter/x_angle = 1.57
+shader_parameter/y_angle = 1.57
+shader_parameter/base_alpha = 0.4
+shader_parameter/refraction_ratio = 10.0
+shader_parameter/clear = 0.0
+shader_parameter/surf_sinpowder = 8.0
+shader_parameter/surf_speed = 1.0
+shader_parameter/surf_angle = 1.57
+shader_parameter/surf_magnitude = 0.0
+shader_parameter/s11 = 2.221
+shader_parameter/sinpowder = 8.0
+
+[node name="Visualisation" type="Node2D"]
+script = ExtResource("1_br2wl")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(432, 284)
+scale = Vector2(3.95833, 3.95833)
+texture = ExtResource("2_kmy5b")
+
+[node name="Shoals" type="Node2D" parent="."]
+
+[node name="WaterWave" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_elt1y")
+offset_left = -42.0
+offset_top = -33.0
+offset_right = 1197.0
+offset_bottom = 687.0
+
+[node name="WaterReflection" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_esu7a")
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 1, 1, 1)
+
+[node name="TankHud" parent="." instance=ExtResource("5_fcrf0")]
+
+[connection signal="addFish" from="TankHud" to="." method="_on_tank_hud_add_fish"]
+[connection signal="deleteTank" from="TankHud" to="." method="_on_tank_hud_delete_tank"]

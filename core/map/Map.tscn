@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://cohiqpmocmlal"]
+
+[ext_resource type="Script" uid="uid://dnn746snwr08b" path="res://core/map/map.gd" id="1_ss7mx"]
+
+[node name="Map" type="CanvasLayer"]
+script = ExtResource("1_ss7mx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Inventory" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Inventory"
+
+[node name="Aquarium" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Aquarium"
+
+[node name="Fishing" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Fishing"
+
+[node name="Upgrade" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Upgrade"
+
+[node name="Treasure" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Treasure"
+
+[node name="Boat" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "Boat"
+
+[connection signal="pressed" from="MarginContainer/Inventory" to="." method="_on_inventory_pressed"]
+[connection signal="pressed" from="MarginContainer/Aquarium" to="." method="_on_aquarium_pressed"]
+[connection signal="pressed" from="MarginContainer/Fishing" to="." method="_on_fishing_pressed"]
+[connection signal="pressed" from="MarginContainer/Upgrade" to="." method="_on_upgrade_pressed"]
+[connection signal="pressed" from="MarginContainer/Treasure" to="." method="_on_treasure_pressed"]
+[connection signal="pressed" from="MarginContainer/Boat" to="." method="_on_boat_pressed"]

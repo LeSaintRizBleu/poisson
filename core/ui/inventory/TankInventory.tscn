@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://he55a86ktufl"]
+
+[ext_resource type="Script" uid="uid://c6il6484yogqi" path="res://core/ui/inventory/TankInventory.gd" id="1_cjip3"]
+[ext_resource type="PackedScene" uid="uid://c6qmtkj61lgup" path="res://core/ui/errorPopup/ErrorPopupManager.tscn" id="2_wl2od"]
+
+[node name="TankInventory" type="CanvasLayer"]
+script = ExtResource("1_cjip3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.219501, 0.219501, 0.219501, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer"]
+layout_mode = 2
+split_offset = 526
+drag_area_highlight_in_editor = true
+
+[node name="Aqurium" type="MarginContainer" parent="MarginContainer/HSplitContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/Aqurium"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/Aqurium/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Aquarium"
+horizontal_alignment = 1
+
+[node name="AquariumList" type="ItemList" parent="MarginContainer/HSplitContainer/Aqurium/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Inventory" type="MarginContainer" parent="MarginContainer/HSplitContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/Inventory"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/Inventory/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="InventoryList" type="ItemList" parent="MarginContainer/HSplitContainer/Inventory/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 1089.0
+offset_top = 24.0
+offset_right = 1128.0
+offset_bottom = 63.0
+text = "X
+"
+
+[node name="ErrorPopupManager" parent="." instance=ExtResource("2_wl2od")]
+
+[connection signal="item_selected" from="MarginContainer/HSplitContainer/Aqurium/VBoxContainer/AquariumList" to="." method="_on_aquarium_list_item_selected"]
+[connection signal="item_selected" from="MarginContainer/HSplitContainer/Inventory/VBoxContainer/InventoryList" to="." method="_on_inventory_list_item_selected"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

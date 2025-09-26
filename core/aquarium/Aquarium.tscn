@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhngrng4m3cea"]
+
+[ext_resource type="Script" uid="uid://yombfg8ey7rg" path="res://core/aquarium/Aquarium.gd" id="1_a84l0"]
+[ext_resource type="PackedScene" uid="uid://emlhy8hilx00" path="res://core/ui/aquariumHUD/aquariumHUD.tscn" id="2_p073m"]
+
+[node name="Aquarium" type="Node2D"]
+script = ExtResource("1_a84l0")
+
+[node name="Structures" type="Node2D" parent="."]
+
+[node name="Ghosts" type="Node2D" parent="."]
+
+[node name="Visualisation" type="Node2D" parent="."]
+
+[node name="AquariumHud" parent="." instance=ExtResource("2_p073m")]
+
+[connection signal="createTank" from="AquariumHud" to="." method="_on_aquarium_hud_create_tank"]

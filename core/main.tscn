@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b68txebnw7hsc"]
+
+[ext_resource type="PackedScene" uid="uid://dqx33048x87lx" path="res://core/visualisation/Visualisation.tscn" id="1_xiose"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Aquarium" parent="." instance=ExtResource("1_xiose")]
+fishes_in = {
+"test1": 2,
+"test2": 10
+}

@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvb0pidmli3tt"]
+
+[ext_resource type="Script" uid="uid://bdecfyn26b7pk" path="res://core/fishing/Fishing.gd" id="1_43g8x"]
+[ext_resource type="Texture2D" uid="uid://d3g8rbxt1pqde" path="res://icon.svg" id="1_hlba1"]
+
+[node name="Fishing" type="Node2D"]
+script = ExtResource("1_43g8x")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1000.0
+offset_top = 74.0
+offset_right = 1030.0
+offset_bottom = 574.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(15, 250)
+color = Color(1, 0, 0, 1)
+
+[node name="Green" type="Node2D" parent="."]
+
+[node name="Bar" type="Node2D" parent="."]
+position = Vector2(1000, 74)
+
+[node name="Slider" type="Sprite2D" parent="Bar"]
+position = Vector2(15, 495)
+scale = Vector2(0.3, 0.05)
+texture = ExtResource("1_hlba1")
+
+[node name="EnergyLabel" type="Label" parent="."]
+offset_left = 25.0
+offset_top = 571.0
+offset_right = 194.0
+offset_bottom = 653.0
+text = "energy"
+
+[node name="EnergyBar" type="ProgressBar" parent="."]
+offset_left = 21.0
+offset_top = 600.0
+offset_right = 531.0
+offset_bottom = 627.0
+
+[node name="CaptureLabel" type="Label" parent="."]
+offset_left = 27.0
+offset_top = 483.0
+offset_right = 123.0
+offset_bottom = 506.0
+text = "caprute rate"
+
+[node name="CaptureBar" type="ProgressBar" parent="."]
+offset_left = 19.0
+offset_top = 510.0
+offset_right = 521.0
+offset_bottom = 537.0
