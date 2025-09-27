@@ -7,6 +7,8 @@ var data: Dictionary = {
 	"money": 0
 }
 
+signal update_gold
+
 func _ready() -> void:
 	loadData()
 	clear()
@@ -123,8 +125,21 @@ func getMoney() -> int:
 
 func addMoney(amount: int) -> void:
 	data["money"] += amount
+	update_gold.emit()
 	saveData()
 
 func subMoney(amount: int) -> void:
 	data["money"] -= amount
+	update_gold.emit()
 	saveData()
+	
+func checkMoney(amount: int) -> bool:
+	return data["money"] >= amount
+	
+func spendMoney(amount: int) -> bool:
+	if data["money"] < amount:
+		return false
+	data["money"] -= amount
+	update_gold.emit()
+	saveData()
+	return true
