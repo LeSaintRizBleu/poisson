@@ -20,30 +20,33 @@ func init() -> void:
 			var x: float = aquarium["x"]
 			var y: float = aquarium["y"]
 			var pos: Vector2 = Vector2(x, y)
+			instance.type = aquarium["type"]
 			instance.global_position = pos
 			instance.id = id
 			structures.add_child(instance)
 
-func createTankGhost() -> void:
+func createTankGhost(type: String) -> void:
 	if Save.getMoney() < 100:
 		errorPopup("Vous n'avez pas assez d'argent, l'aquarium coute 100 $")
 	elif ghosts.get_child_count() == 0:
 		var instance: TankGhost = tankGhost.instantiate()
+		instance.type = type
 		ghosts.add_child(instance)
 		instance.createTank.connect(createTank)
 		instance.error.connect(errorPopup)
 
-func createTank(pos: Vector2) -> void:
+func createTank(pos: Vector2, type: String) -> void:
 	hud.update()
-	var id: String = Save.addAquirium(pos)
+	var id: String = Save.addAquirium(pos, type)
 	Save.saveData()
 	var instance: Tank = tank.instantiate()
 	instance.id = id
 	instance.global_position = pos
+	instance.type = type
 	structures.add_child(instance)
 
-func _on_aquarium_hud_create_tank() -> void:
-	createTankGhost()
+func _on_aquarium_hud_create_tank(type: String) -> void:
+	createTankGhost(type)
 
 func errorPopup(content: String) -> void:
 	hud.errorPopup(content)

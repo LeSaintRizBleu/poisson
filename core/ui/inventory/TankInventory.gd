@@ -45,9 +45,10 @@ func _on_aquarium_list_item_selected(index: int) -> void:
 
 func _on_inventory_list_item_selected(index: int) -> void:
 	var data: Dictionary = Save.getAquarium(id)
-	var size: int = data["size"]
 	var fishesIn: int = 0
 	var fishes: Dictionary = data["fishes"]
+	var type: String = data["type"]
+	var size: int = getSizeForType(type)
 	for v: int in fishes.values():
 		fishesIn += v
 
@@ -60,6 +61,17 @@ func _on_inventory_list_item_selected(index: int) -> void:
 		loadInventory()
 	else:
 		errorPopupManager.addPopup("L'aquarium est plein, vous ne pouvez pas ajouter de poisson")
+
+func getSizeForType(type: String) -> int:
+	var size: int = 0
+	match type:
+		"small":
+			size = 10
+		"medium":
+			size = 25
+		"big":
+			size = 60
+	return size
 
 func _on_quit_pressed() -> void:
 	quit()

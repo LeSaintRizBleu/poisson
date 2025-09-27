@@ -15,14 +15,14 @@ func getAquariums() -> Dictionary:
 	var aquariums: Dictionary = data["aquariums"]
 	return aquariums.duplicate(true)
 
-func addAquirium(pos: Vector2) -> String:
+func addAquirium(pos: Vector2, type: String) -> String:
 	var aquariums: Dictionary = data["aquariums"]
 	var aquariumId: String = "aquarium_%s" % aquariums.size()
 	aquariums[aquariumId] = {
 		"x": pos.x,
 		"y": pos.y,
 		"fishes": {},
-		"size": 50
+		"type": type
 	}
 	return aquariumId
 

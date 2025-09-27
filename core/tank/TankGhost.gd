@@ -2,6 +2,7 @@ extends Node2D
 class_name TankGhost
 
 var can_be_placed: int = 0
+var type: String
 
 @onready var sprite: Sprite2D = $Sprite2D
 
@@ -32,7 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func create_struct() -> void:
 	if can_be_placed == 0:
 		Save.subMoney(100)
-		createTank.emit(get_pos_in_grid())
+		createTank.emit(get_pos_in_grid(), type)
 		destroy()
 	else:
 		error.emit("L'objet ne peut pas être placé ici, l'espace n'est pas libre.")
