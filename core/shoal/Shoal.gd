@@ -20,9 +20,10 @@ func _physics_process(delta: float) -> void:
 		var rotation_angle: float = randf_range(-PI/6, PI/6)
 		direction = direction.rotated(rotation_angle)
 
-	for node: Fish in get_children():
+	for node in get_children():
 		if node is Fish:
-			node.update_fish(delta, global_position, direction)
+			var myfish : Fish = node
+			myfish.update_fish(delta, global_position, direction)
 
 func check_bound() -> void:
 	var new_direction: Vector2 = direction
