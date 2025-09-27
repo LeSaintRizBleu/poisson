@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://emlhy8hilx00"]
+[gd_scene load_steps=4 format=3 uid="uid://emlhy8hilx00"]
 
 [ext_resource type="Script" uid="uid://03yckactusbs" path="res://core/ui/aquariumHUD/aquarium_hud.gd" id="1_kg4aj"]
 [ext_resource type="PackedScene" uid="uid://c6qmtkj61lgup" path="res://core/ui/errorPopup/ErrorPopupManager.tscn" id="2_nd0lw"]
+[ext_resource type="PackedScene" uid="uid://cobv8ufbqehcx" path="res://core/ui/aquariumShop/AquariumShop.tscn" id="3_bamba"]
 
 [node name="AquariumHud" type="CanvasLayer"]
 script = ExtResource("1_kg4aj")
@@ -50,58 +51,8 @@ text = "1000$"
 
 [node name="ErrorPopupManager" parent="." instance=ExtResource("2_nd0lw")]
 
-[node name="Shop" type="Container" parent="."]
-visible = false
-custom_minimum_size = Vector2(1152, 200)
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -200.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="Shop"]
-custom_minimum_size = Vector2(1152, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="Shop"]
-custom_minimum_size = Vector2(1152, 200)
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Shop/MarginContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/ScrollContainer"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="Button" type="Button" parent="Shop/MarginContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Small Aquarium"
-autowrap_mode = 2
-
-[node name="Button2" type="Button" parent="Shop/MarginContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Medium Aquarium"
-autowrap_mode = 2
-
-[node name="Button3" type="Button" parent="Shop/MarginContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Big Aquarium"
-autowrap_mode = 2
+[node name="AquariumShop" parent="." instance=ExtResource("3_bamba")]
 
 [connection signal="pressed" from="MarginContainer/Shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="MarginContainer/Map" to="." method="_on_map_pressed"]
+[connection signal="createTank" from="AquariumShop" to="." method="_on_aquarium_shop_create_tank"]

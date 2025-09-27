@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://cobv8ufbqehcx"]
+
+[ext_resource type="Script" uid="uid://dk0g0embymee0" path="res://core/ui/aquariumShop/aquarium_shop.gd" id="1_sxa4d"]
+
+[node name="AquariumShop" type="Control"]
+visible = false
+custom_minimum_size = Vector2(1152, 200)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_sxa4d")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1152, 200)
+layout_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1152, 200)
+layout_mode = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Small" type="Button" parent="MarginContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Small Aquarium"
+autowrap_mode = 2
+
+[node name="Medium" type="Button" parent="MarginContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Medium Aquarium"
+autowrap_mode = 2
+
+[node name="Big" type="Button" parent="MarginContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Big Aquarium"
+autowrap_mode = 2
+
+[connection signal="pressed" from="MarginContainer/ScrollContainer/HBoxContainer/Small" to="." method="_on_small_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/HBoxContainer/Medium" to="." method="_on_medium_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/HBoxContainer/Big" to="." method="_on_big_pressed"]
