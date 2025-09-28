@@ -36,7 +36,6 @@ func createTankGhost(type: String) -> void:
 		instance.error.connect(errorPopup)
 
 func createTank(pos: Vector2, type: String) -> void:
-	hud.update()
 	var id: String = Save.addAquirium(pos, type)
 	Save.saveData()
 	var instance: Tank = tank.instantiate()
