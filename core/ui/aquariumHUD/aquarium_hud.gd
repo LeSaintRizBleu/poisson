@@ -4,7 +4,6 @@ class_name AquariumHUD
 var mapUrl: String = "res://core/map/Map.tscn"
 
 @onready var errorPopupManager: ErrorPopupManager = $ErrorPopupManager
-@onready var money: Label = $MarginContainer/HBoxContainer/Money
 
 @onready var shopButton: Button = $MarginContainer/Shop
 @onready var mapButton: Button = $MarginContainer/Map
@@ -14,9 +13,6 @@ var mapUrl: String = "res://core/map/Map.tscn"
 var shopOpened: bool = false
 
 signal createTank
-
-func _ready() -> void:
-	update()
 
 func _on_map_pressed() -> void:
 	if randi() % 2 == 0:
@@ -28,13 +24,9 @@ func _on_map_pressed() -> void:
 
 func _on_shop_pressed() -> void:
 	openShop()
-
+	
 func errorPopup(content: String) -> void:
 	errorPopupManager.addPopup(content)
-
-func update() -> void:
-	var m: int = Save.getMoney()
-	money.text = str(m) + " $"
 
 func openShop() -> void:
 	shopOpened = true

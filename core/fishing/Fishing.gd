@@ -96,9 +96,10 @@ func clearGreenZone() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var mouse_event: InputEventMouseButton = event as InputEventMouseButton
-		if mouse_event.button_index == MOUSE_BUTTON_LEFT && mouse_event.pressed && isMoving:
-			stopMovement()
-			checkSlider()
+		if mouse_event.button_index == MOUSE_BUTTON_LEFT && mouse_event.pressed:
+			if isMoving:
+				stopMovement()
+				checkSlider()
 
 func checkSlider() -> void:
 	for zone: Dictionary in greenZones:

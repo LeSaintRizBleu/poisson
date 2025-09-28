@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://emlhy8hilx00"]
+[gd_scene load_steps=5 format=3 uid="uid://emlhy8hilx00"]
 
 [ext_resource type="Script" uid="uid://03yckactusbs" path="res://core/ui/aquariumHUD/aquarium_hud.gd" id="1_kg4aj"]
+[ext_resource type="PackedScene" uid="uid://vw28hqimg17m" path="res://core/ui/components/moneyDisplay/money_display.tscn" id="2_8yqsc"]
 [ext_resource type="PackedScene" uid="uid://c6qmtkj61lgup" path="res://core/ui/errorPopup/ErrorPopupManager.tscn" id="2_nd0lw"]
 [ext_resource type="PackedScene" uid="uid://cobv8ufbqehcx" path="res://core/ui/aquariumShop/AquariumShop.tscn" id="3_bamba"]
 
@@ -44,10 +45,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Bla bla bla"
 
-[node name="Money" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="MoneyDisplay" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_8yqsc")]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "1000$"
 
 [node name="ErrorPopupManager" parent="." instance=ExtResource("2_nd0lw")]
 
