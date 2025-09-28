@@ -24,7 +24,7 @@ func _on_map_pressed() -> void:
 
 func _on_shop_pressed() -> void:
 	openShop()
-
+	
 func errorPopup(content: String) -> void:
 	errorPopupManager.addPopup(content)
 
