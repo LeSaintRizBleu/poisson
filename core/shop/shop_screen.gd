@@ -18,7 +18,6 @@ func create_shop_item(item : ShopItem) -> void:
 	item_grid.add_child(new_item_displayer)
 
 func _click_item(displayer : ShopItemDisplayer) -> void:
-	if Save.spendMoney(displayer.item.price):
+	if displayer.item.buy():
 		displayer.queue_free()
-	
 	

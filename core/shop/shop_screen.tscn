@@ -1,57 +1,28 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqo2e1yu5khru"]
+[gd_scene load_steps=11 format=3 uid="uid://bqo2e1yu5khru"]
 
 [ext_resource type="Script" uid="uid://bklb6krgjknkp" path="res://core/shop/shop_screen.gd" id="1_a3ggq"]
 [ext_resource type="Script" uid="uid://cuidumkwkt62t" path="res://core/shop/shop_item.gd" id="2_5sqav"]
-[ext_resource type="Texture2D" uid="uid://cual514pbtdj2" path="res://assets/fishes/test1.png" id="3_dtfao"]
+[ext_resource type="Texture2D" uid="uid://lvfgnycxa4mn" path="res://assets/fishes/test2.png" id="3_5037v"]
 [ext_resource type="Script" uid="uid://d0htjcgjupfiw" path="res://core/shop/ShopInventory.gd" id="4_assy3"]
-[ext_resource type="Texture2D" uid="uid://dajp0m7x5cg3j" path="res://assets/fishes/test2.png" id="4_dtfao"]
+[ext_resource type="Script" uid="uid://bjugsxd3nw8dr" path="res://core/shop/gold_shop_item.gd" id="4_lim2q"]
+[ext_resource type="Texture2D" uid="uid://ddskdwtbrtxxp" path="res://assets/fishes/test1.png" id="5_nrbos"]
 [ext_resource type="PackedScene" uid="uid://vw28hqimg17m" path="res://core/ui/components/moneyDisplay/money_display.tscn" id="6_assy3"]
 
-[sub_resource type="Resource" id="Resource_5037v"]
-script = ExtResource("2_5sqav")
-icon = ExtResource("3_dtfao")
-metadata/_custom_type_script = "uid://cuidumkwkt62t"
-
-[sub_resource type="Resource" id="Resource_lim2q"]
-script = ExtResource("2_5sqav")
-icon = ExtResource("4_dtfao")
-description = "SALAUD"
-metadata/_custom_type_script = "uid://cuidumkwkt62t"
-
-[sub_resource type="Resource" id="Resource_nrbos"]
-script = ExtResource("2_5sqav")
-icon = ExtResource("3_dtfao")
-metadata/_custom_type_script = "uid://cuidumkwkt62t"
-
 [sub_resource type="Resource" id="Resource_yk1n7"]
-script = ExtResource("2_5sqav")
-icon = ExtResource("4_dtfao")
-metadata/_custom_type_script = "uid://cuidumkwkt62t"
+script = ExtResource("4_lim2q")
+price = 5
+icon = ExtResource("3_5037v")
+metadata/_custom_type_script = "uid://bjugsxd3nw8dr"
 
 [sub_resource type="Resource" id="Resource_shp1x"]
-script = ExtResource("2_5sqav")
-icon = ExtResource("3_dtfao")
-metadata/_custom_type_script = "uid://cuidumkwkt62t"
-
-[sub_resource type="Resource" id="Resource_71wgt"]
-script = ExtResource("2_5sqav")
-icon = ExtResource("3_dtfao")
-metadata/_custom_type_script = "uid://cuidumkwkt62t"
-
-[sub_resource type="Resource" id="Resource_237j4"]
-script = ExtResource("2_5sqav")
-icon = ExtResource("4_dtfao")
-metadata/_custom_type_script = "uid://cuidumkwkt62t"
-
-[sub_resource type="Resource" id="Resource_nsfe3"]
-script = ExtResource("2_5sqav")
-icon = ExtResource("4_dtfao")
-description = "salu"
-metadata/_custom_type_script = "uid://cuidumkwkt62t"
+script = ExtResource("4_lim2q")
+price = 100
+icon = ExtResource("5_nrbos")
+metadata/_custom_type_script = "uid://bjugsxd3nw8dr"
 
 [sub_resource type="Resource" id="Resource_tk5th"]
 script = ExtResource("4_assy3")
-contents = Array[ExtResource("2_5sqav")]([SubResource("Resource_5037v"), SubResource("Resource_lim2q"), SubResource("Resource_nrbos"), SubResource("Resource_yk1n7"), SubResource("Resource_shp1x"), SubResource("Resource_71wgt"), SubResource("Resource_237j4"), SubResource("Resource_nsfe3")])
+contents = Array[ExtResource("2_5sqav")]([SubResource("Resource_yk1n7"), SubResource("Resource_shp1x")])
 metadata/_custom_type_script = "uid://d0htjcgjupfiw"
 
 [node name="ShopScreen" type="Control"]
