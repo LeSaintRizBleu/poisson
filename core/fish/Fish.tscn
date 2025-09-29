@@ -2,18 +2,20 @@
 
 [ext_resource type="Shader" uid="uid://chipsfptj1ey" path="res://shader/swim.gdshader" id="1_2oipv"]
 [ext_resource type="Script" uid="uid://cne21kobsj06" path="res://core/fish/Fish.gd" id="1_5pn0k"]
-[ext_resource type="Texture2D" uid="uid://dajp0m7x5cg3j" path="res://assets/fishes/test2.png" id="2_evh4f"]
+[ext_resource type="Texture2D" uid="uid://4htqgebx2n1g" path="res://assets/fishes/test2.png" id="2_evh4f"]
 
 [sub_resource type="Gradient" id="Gradient_5pn0k"]
 colors = PackedColorArray(1, 1, 1, 0.588235, 1, 1, 1, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5pn0k"]
+resource_local_to_scene = true
 shader = ExtResource("1_2oipv")
 shader_parameter/speed = 1.5
 shader_parameter/body_amplitude = 0.025
 shader_parameter/tail_amplitude = 0.1
 shader_parameter/frequency = 6.0
 shader_parameter/body_length = 0.5
+shader_parameter/darkness = 0.0
 
 [node name="Fish" type="Node2D"]
 script = ExtResource("1_5pn0k")
