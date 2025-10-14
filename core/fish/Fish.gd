@@ -41,7 +41,7 @@ func init(type: String) -> void:
 	sprite.texture = texture
 	var randomScale: float = randf_range(0.75, 1.5)
 	sprite.scale = Vector2(randomScale, randomScale)
-	var darkness: float = randf_range(0.0, 0.2)
+	var darkness: float = randf_range(0.0, 0.25)
 	var shaderMaterial: ShaderMaterial = sprite.material as ShaderMaterial
 	shaderMaterial.set_shader_parameter("darkness", darkness)
 

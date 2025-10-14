@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bgvhp5jnafgw5"]
 
-[ext_resource type="Shader" uid="uid://chipsfptj1ey" path="res://shader/swim.gdshader" id="1_2oipv"]
+[ext_resource type="Shader" uid="uid://chipsfptj1ey" path="res://shader/Swim.gdshader" id="1_2oipv"]
 [ext_resource type="Script" uid="uid://cne21kobsj06" path="res://core/fish/Fish.gd" id="1_5pn0k"]
 [ext_resource type="Texture2D" uid="uid://4htqgebx2n1g" path="res://assets/fishes/test2.png" id="2_evh4f"]
 

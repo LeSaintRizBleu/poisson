@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bw3oha13r5c4k"]
 
-[ext_resource type="Script" uid="uid://dl88ocr0ln4e8" path="res://core/ui/popup/escape_pop_up.gd" id="1_aarwa"]
+[ext_resource type="Script" uid="uid://dl88ocr0ln4e8" path="res://core/ui/popup/EscapePopUp.gd" id="1_aarwa"]
 
 [node name="EscapePopUp" type="CanvasLayer"]
 script = ExtResource("1_aarwa")

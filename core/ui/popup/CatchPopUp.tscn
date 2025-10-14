@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cd4mtm0l83mc1"]
 
-[ext_resource type="Script" uid="uid://ckuw40hhwf25f" path="res://core/ui/popup/catch_pop_up.gd" id="1_rumn7"]
+[ext_resource type="Script" uid="uid://ckuw40hhwf25f" path="res://core/ui/popup/CatchPopUp.gd" id="1_rumn7"]
 
 [node name="CatchPopUp" type="CanvasLayer"]
 script = ExtResource("1_rumn7")

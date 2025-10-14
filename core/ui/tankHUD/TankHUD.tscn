@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://3rgskf5ypkbr"]
 
-[ext_resource type="Script" uid="uid://dwdwumew8d2x1" path="res://core/ui/tankHUD/tank_hud.gd" id="1_rmuxb"]
+[ext_resource type="Script" uid="uid://dwdwumew8d2x1" path="res://core/ui/tankHUD/TankHUD.gd" id="1_rmuxb"]
 [ext_resource type="PackedScene" uid="uid://c6qmtkj61lgup" path="res://core/ui/errorPopup/ErrorPopupManager.tscn" id="2_ydgh2"]
 
 [node name="TankHud" type="CanvasLayer"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c6qmtkj61lgup"]
 
-[ext_resource type="Script" uid="uid://ckpv5x6jbsno1" path="res://core/ui/errorPopup/error_popup_manager.gd" id="1_5ifpp"]
+[ext_resource type="Script" uid="uid://ckpv5x6jbsno1" path="res://core/ui/errorPopup/ErrorPopupManager.gd" id="1_5ifpp"]
 
 [node name="ErrorPopupManager" type="Control"]
 layout_mode = 3
