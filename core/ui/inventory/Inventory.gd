@@ -4,7 +4,7 @@ class_name Inventory
 @onready var fishContainer: GridContainer = $MarginContainer/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
 @onready var description: Label = $MarginContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/Label
 
-var card: PackedScene = preload("res://core/ui/inventory/fishCard.tscn")
+var card: PackedScene = preload("res://core/ui/inventory/FishCard.tscn")
 
 var mapUrl: String = "res://core/map/Map.tscn"
 
