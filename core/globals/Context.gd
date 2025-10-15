@@ -1,5 +1,5 @@
 extends Node
 
-var tankId: String = ""
+var tank_id: String = ""
 var fish: String = ""
-var ghostOn: bool = false
+var ghost_on: bool = false

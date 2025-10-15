@@ -7,7 +7,6 @@ class_name Shoal
 @export var max_offset:float = 50.0
 
 var direction: Vector2 = Vector2.RIGHT
-var fishType: String
 
 func _ready() -> void:
 	direction = direction.rotated(randf_range(-PI, PI))
@@ -22,8 +21,8 @@ func _physics_process(delta: float) -> void:
 
 	for node in get_children():
 		if node is Fish:
-			var myfish : Fish = node
-			myfish.update_fish(delta, global_position, direction)
+			var fish : Fish = node
+			fish.update_fish(delta, global_position, direction)
 
 func check_bound() -> void:
 	var new_direction: Vector2 = direction

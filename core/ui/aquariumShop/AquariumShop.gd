@@ -1,7 +1,7 @@
 extends Control
 class_name AquariumShop
 
-signal createTank
+signal create_tank
 
 func open() -> void:
 	show()
@@ -10,10 +10,10 @@ func close() -> void:
 	hide()
 
 func _on_big_pressed() -> void:
-	createTank.emit("big")
+	create_tank.emit("big")
 
 func _on_medium_pressed() -> void:
-	createTank.emit("medium")
+	create_tank.emit("medium")
 
 func _on_small_pressed() -> void:
-	createTank.emit("small")
+	create_tank.emit("small")

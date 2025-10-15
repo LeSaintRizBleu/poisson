@@ -1,7 +1,7 @@
 extends Node2D
 class_name Visualisation
 
-@export var fishesIn: Dictionary = {}
+@export var fishes_in: Dictionary = {}
 @export var width: float = 1152.0
 @export var height: float = 658.0
 
@@ -10,30 +10,30 @@ class_name Visualisation
 
 var shoal: PackedScene = preload("res://core/shoal/Shoal.tscn")
 var fish: PackedScene = preload("res://core/fish/Fish.tscn")
-var tankInventory: PackedScene = preload("res://core/ui/inventory/TankInventory.tscn")
+var tank_inventory: PackedScene = preload("res://core/ui/inventory/TankInventory.tscn")
 var id: String
 
 var offset: float = 100.0
 
-var aquariumUrl: String = "res://core/aquarium/Aquarium.tscn"
+var aquarium_url: String = "res://core/aquarium/Aquarium.tscn"
 
 func _ready() -> void:
-	id = Context.tankId
+	id = Context.tank_id
 	reload_fishes()
 
 func reload_fishes() -> void:
 	clear()
-	fishesIn = Save.getFishesInAquarium(id)
-	for fishType: String in fishesIn:
-		var data: Dictionary = Infos.get_fishes_info(fishType)
-		var n: int = fishesIn[fishType]
-		var maxFishes: int = data["max_in_shoals"]
-		var shoalsNumber: int = ceil(float(n) / maxFishes)
-		for s: int in range(shoalsNumber):
-			var current_soal: Shoal = create_shoal(fishType)
-			for i: int in range( min(maxFishes, n) ):
-				create_fish(current_soal, fishType)
-			n -= maxFishes
+	fishes_in = Save.get_fishes_in_aquarium(id)
+	for fish_type: String in fishes_in:
+		var data: Dictionary = Infos.get_fishes_info(fish_type)
+		var n: int = fishes_in[fish_type]
+		var max_fishes: int = data["max_in_shoals"]
+		var shoals_number: int = ceil(float(n) / max_fishes)
+		for s: int in range(shoals_number):
+			var current_soal: Shoal = create_shoal(fish_type)
+			for i: int in range( min(max_fishes, n) ):
+				create_fish(current_soal, fish_type)
+			n -= max_fishes
 
 func clear() -> void:
 	for child in shoals.get_children():
@@ -44,7 +44,6 @@ func create_shoal(fish_type: String) -> Shoal:
 	var x: float = randf_range(offset, width - offset)
 	var y: float = randf_range(offset, height - offset)
 	shoal_instance.global_position = Vector2(x, y)
-	shoal_instance.fishType = fish_type
 	shoals.add_child(shoal_instance)
 	shoal_instance.init(fish_type, width, height)
 	return shoal_instance
@@ -55,21 +54,21 @@ func create_fish(currennt_shoal: Shoal, fish_type: String) -> void:
 	fish_instance.init(fish_type)
 
 func quit() -> void:
-	Context.tankId = ""
-	get_tree().change_scene_to_file(aquariumUrl)
+	Context.tank_id = ""
+	get_tree().change_scene_to_file(aquarium_url)
 
 func _on_tank_hud_add_fish() -> void:
-	var inventoryInstance: TankInventory = tankInventory.instantiate()
+	var inventoryInstance: TankInventory = tank_inventory.instantiate()
 	inventoryInstance.id = id
 	add_child(inventoryInstance)
 	inventoryInstance.reload_fishes.connect(reload_fishes)
 
 
 func _on_tank_hud_delete_tank() -> void:
-	var data: Dictionary = Save.getFishesInAquarium(id)
+	var data: Dictionary = Save.get_fishes_in_aquarium(id)
 	if data.is_empty():
-		Save.removeAquirium(id)
-		Save.saveData()
+		Save.remove_aquirium(id)
+		Save.save_data()
 		quit()
 	else:
-		hud.errorPopup("L'aquarium n'est pas vide, il ne peut pas être supprimer.")
+		hud.add_error_popup("L'aquarium n'est pas vide, il ne peut pas être supprimer.")

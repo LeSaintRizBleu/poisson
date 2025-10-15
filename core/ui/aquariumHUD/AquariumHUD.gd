@@ -1,52 +1,52 @@
 extends CanvasLayer
 class_name AquariumHUD
 
-var mapUrl: String = "res://core/map/Map.tscn"
+var map_url: String = "res://core/map/Map.tscn"
 
-@onready var errorPopupManager: ErrorPopupManager = $ErrorPopupManager
+@onready var error_popup_manager: ErrorPopupManager = $ErrorPopupManager
 
-@onready var shopButton: Button = $MarginContainer/Shop
-@onready var mapButton: Button = $MarginContainer/Map
+@onready var shop_button: Button = $MarginContainer/Shop
+@onready var map_button: Button = $MarginContainer/Map
 
 @onready var shop: AquariumShop = $AquariumShop
 
-var shopOpened: bool = false
+var is_shop_open: bool = false
 
-signal createTank
+signal create_tank
 
 func _on_map_pressed() -> void:
 	if randi() % 2 == 0:
 		Context.fish = "test1"
 	else:
 		Context.fish = "test2"
-	get_tree().change_scene_to_file(mapUrl)
+	get_tree().change_scene_to_file(map_url)
 
 
 func _on_shop_pressed() -> void:
-	openShop()
+	open_shop()
 	
-func errorPopup(content: String) -> void:
-	errorPopupManager.addPopup(content)
+func add_error_popup(content: String) -> void:
+	error_popup_manager.add_popup(content)
 
-func openShop() -> void:
-	shopOpened = true
+func open_shop() -> void:
+	is_shop_open = true
 	shop.open()
-	shopButton.hide()
-	mapButton.hide()
+	shop_button.hide()
+	map_button.hide()
 
-func closeShop() -> void:
-	shopOpened = false
+func close_shop() -> void:
+	is_shop_open = false
 	shop.close()
-	shopButton.show()
-	mapButton.show()
+	shop_button.show()
+	map_button.show()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var mouse_event: InputEventMouseButton = event as InputEventMouseButton
 		if mouse_event.button_index == MOUSE_BUTTON_RIGHT && mouse_event.pressed:
-			if shopOpened:
-				closeShop()
+			if is_shop_open:
+				close_shop()
 
 func _on_aquarium_shop_create_tank(type: String) -> void:
-	closeShop()
-	createTank.emit(type)
+	close_shop()
+	create_tank.emit(type)

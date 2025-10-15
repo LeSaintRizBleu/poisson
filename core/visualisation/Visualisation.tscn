@@ -58,5 +58,5 @@ color = Color(0, 1, 1, 1)
 
 [node name="TankHud" parent="." instance=ExtResource("5_fcrf0")]
 
-[connection signal="addFish" from="TankHud" to="." method="_on_tank_hud_add_fish"]
-[connection signal="deleteTank" from="TankHud" to="." method="_on_tank_hud_delete_tank"]
+[connection signal="add_fish" from="TankHud" to="." method="_on_tank_hud_add_fish"]
+[connection signal="delete_tank" from="TankHud" to="." method="_on_tank_hud_delete_tank"]

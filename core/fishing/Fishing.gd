@@ -3,17 +3,17 @@ class_name Fishing
 
 @onready var slider: Node2D = $Bar/Slider
 @onready var green: Node2D = $Green
-@onready var energyBar: ProgressBar = $EnergyBar
-@onready var captureBar: ProgressBar = $CaptureBar
+@onready var energy_bar: ProgressBar = $EnergyBar
+@onready var capture_bar: ProgressBar = $CaptureBar
 
-var downTarget: Vector2 = Vector2(15, 495)
-var upTarget: Vector2 = Vector2(15, 5)
+var down_target: Vector2 = Vector2(15, 495)
+var up_target: Vector2 = Vector2(15, 5)
 
 var tween: Tween
-var isMoving: bool = false
+var is_moving: bool = false
 var moving_up: bool = true
 
-var greenZones: Array = []
+var green_zones: Array = []
 
 var energy: float = 100.0
 var rate: float = 1.0
@@ -25,19 +25,19 @@ var duration: float
 var difficulty: int
 var size: int
 
-var catchPopUp: PackedScene = preload("res://core/ui/popup/CatchPopUp.tscn")
-var escapePopUp: PackedScene = preload("res://core/ui/popup/EscapePopUp.tscn")
+var catch_popup: PackedScene = preload("res://core/ui/popup/CatchPopUp.tscn")
+var escape_popup: PackedScene = preload("res://core/ui/popup/EscapePopUp.tscn")
 
 func _process(delta: float) -> void:
-	processEnergy(delta)
+	_process_energy(delta)
 
-func processEnergy(delta: float) -> void:
-	if !isMoving: return
+func _process_energy(delta: float) -> void:
+	if !is_moving: return
 	energy -= rate * delta
 	energy = clampf(energy, 0.0, 100.0)
 	capture = clampf(capture, 0.0, 100.0)
-	energyBar.value = energy
-	captureBar.value = capture
+	energy_bar.value = energy
+	capture_bar.value = capture
 	if energy <= 0:
 		escape()
 	if capture >= 100:
@@ -48,48 +48,48 @@ func _ready() -> void:
 	difficulty = Infos.get_fishes_info(fish)["difficulty"]
 	size = Infos.get_fishes_info(fish)["size"]
 	duration = Infos.get_fishes_info(fish)["duration"]
-	addGreenZone()
-	startMovement()
+	add_green_zone()
+	start_movement()
 
 func catch() -> void:
-	clearGreenZone()
-	stopMovement()
-	var instance: CatchPopUp = catchPopUp.instantiate()
+	_clear_green_zone()
+	stop_movement()
+	var instance: CatchPopUp = catch_popup.instantiate()
 	instance.fish = fish
 	add_child(instance)
 
 func escape() -> void:
-	clearGreenZone()
-	stopMovement()
-	var instance: EscapePopUp = escapePopUp.instantiate()
+	_clear_green_zone()
+	stop_movement()
+	var instance: EscapePopUp = escape_popup.instantiate()
 	add_child(instance)
 
-func addGreenZone() -> void:
+func add_green_zone() -> void:
 	if difficulty == 1:
-		addSymGreenZone()
+		add_sym_green_zone()
 	if difficulty == 2:
-		addRandomGreenZone()
+		add_random_green_zone()
 
-func addSymGreenZone() -> void:
+func add_sym_green_zone() -> void:
 	var pos1: int = randi_range(0, 250 - size)
 	var pos2: int = 500 - size - pos1
-	addGreenZoneToSlider(pos1)
-	addGreenZoneToSlider(pos2)
+	_add_green_zone_to_slider(pos1)
+	_add_green_zone_to_slider(pos2)
 
-func addRandomGreenZone() -> void:
+func add_random_green_zone() -> void:
 	var pos: int = randi_range(0, 500 - size)
-	addGreenZoneToSlider(pos)
+	_add_green_zone_to_slider(pos)
 
-func addGreenZoneToSlider(pos: int) -> void:
-	greenZones.append({"pos": pos, "size": size})
+func _add_green_zone_to_slider(pos: int) -> void:
+	green_zones.append({"pos": pos, "size": size})
 	var color_rect: ColorRect = ColorRect.new()
 	color_rect.color = Color.WEB_GREEN
 	color_rect.size = Vector2(30, size)
 	color_rect.position = Vector2(1000, 74 + pos)
 	green.add_child(color_rect)
 
-func clearGreenZone() -> void:
-	greenZones = []
+func _clear_green_zone() -> void:
+	green_zones = []
 	for zone in green.get_children():
 		green.remove_child(zone)
 
@@ -97,12 +97,12 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var mouse_event: InputEventMouseButton = event as InputEventMouseButton
 		if mouse_event.button_index == MOUSE_BUTTON_LEFT && mouse_event.pressed:
-			if isMoving:
-				stopMovement()
-				checkSlider()
+			if is_moving:
+				stop_movement()
+				check_slider()
 
-func checkSlider() -> void:
-	for zone: Dictionary in greenZones:
+func check_slider() -> void:
+	for zone: Dictionary in green_zones:
 		if slider.position.y > zone["pos"] && slider.position.y < zone["pos"]+zone["size"]:
 			success()
 			return
@@ -112,40 +112,40 @@ func success() -> void:
 	energy += 25
 	capture += strength
 	await get_tree().create_timer(0.25).timeout
-	clearGreenZone()
-	addGreenZone()
+	_clear_green_zone()
+	add_green_zone()
 	await get_tree().create_timer(0.25).timeout
-	startMovement()
+	start_movement()
 
 func fail() -> void:
 	energy -= 25
 	await get_tree().create_timer(0.25).timeout
-	clearGreenZone()
-	addGreenZone()
+	_clear_green_zone()
+	add_green_zone()
 	await get_tree().create_timer(0.25).timeout
-	startMovement()
+	start_movement()
 
-func startMovement() -> void:
+func start_movement() -> void:
 	if tween and tween.is_valid():
 		tween.kill()
 
-	isMoving = true
+	is_moving = true
 	tween = create_tween()
 	tween.set_loops(0)
 
-	var target: Vector2 = upTarget if moving_up else downTarget
-	var full_distance: float = upTarget.distance_to(downTarget)
+	var target: Vector2 = up_target if moving_up else down_target
+	var full_distance: float = up_target.distance_to(down_target)
 	var current_distance: float = slider.position.distance_to(target)
 	var move_duration: float = duration * (current_distance / full_distance)
 
 	tween.tween_property(slider, "position", target, move_duration)
-	tween.tween_callback(switch_direction)
-	tween.tween_callback(startMovement)
+	tween.tween_callback(_switch_direction)
+	tween.tween_callback(start_movement)
 
-func switch_direction() -> void:
+func _switch_direction() -> void:
 	moving_up = !moving_up
 
-func stopMovement() -> void:
-	isMoving = false
+func stop_movement() -> void:
+	is_moving = false
 	if tween and tween.is_running():
 		tween.pause()

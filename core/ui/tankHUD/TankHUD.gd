@@ -1,24 +1,24 @@
 extends CanvasLayer
 class_name TankHUD
 
-var aquariumUrl: String = "res://core/aquarium/Aquarium.tscn"
-@onready var errorPopupManager: ErrorPopupManager  = $ErrorPopupManager
+var aquarium_url: String = "res://core/aquarium/Aquarium.tscn"
+@onready var error_popup_manager: ErrorPopupManager  = $ErrorPopupManager
 
-signal addFish
-signal deleteTank
+signal add_fish
+signal delete_tank
 
 func _on_close_pressed() -> void:
 	quit()
 
 func _on_add_fish_pressed() -> void:
-	addFish.emit()
+	add_fish.emit()
 
 func _on_delete_pressed() -> void:
-	deleteTank.emit()
+	delete_tank.emit()
 
 func quit() -> void:
-	Context.tankId = ""
-	get_tree().change_scene_to_file(aquariumUrl)
+	Context.tank_id = ""
+	get_tree().change_scene_to_file(aquarium_url)
 
-func errorPopup(content: String) -> void:
-	errorPopupManager.addPopup(content)
+func add_error_popup(content: String) -> void:
+	error_popup_manager.add_popup(content)
