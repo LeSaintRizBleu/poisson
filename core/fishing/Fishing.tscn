@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvb0pidmli3tt"]
 
 [ext_resource type="Script" uid="uid://bdecfyn26b7pk" path="res://core/fishing/Fishing.gd" id="1_43g8x"]
-[ext_resource type="Texture2D" uid="uid://d3g8rbxt1pqde" path="res://icon.svg" id="1_hlba1"]
+[ext_resource type="Texture2D" uid="uid://c7bv4eutgqekf" path="res://icon.svg" id="1_hlba1"]
 
 [node name="Fishing" type="Node2D"]
 script = ExtResource("1_43g8x")
