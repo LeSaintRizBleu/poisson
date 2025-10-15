@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bityvtipy8qyg"]
+[gd_scene load_steps=2 format=3 uid="uid://bityvtipy8qyg"]
 
 [ext_resource type="Script" uid="uid://bks14akommiaa" path="res://core/ui/inventory/FishCard.gd" id="1_71al8"]
-[ext_resource type="Texture2D" uid="uid://cual514pbtdj2" path="res://assets/fishes/test1.png" id="1_a25v4"]
 
 [node name="FishCard" type="Control"]
 custom_minimum_size = Vector2(100, 100)
@@ -60,7 +59,6 @@ offset_bottom = 39.0
 grow_horizontal = 2
 size_flags_vertical = 0
 mouse_filter = 2
-texture = ExtResource("1_a25v4")
 stretch_mode = 3
 
 [connection signal="gui_input" from="MarginContainer" to="." method="_on_margin_container_gui_input"]
