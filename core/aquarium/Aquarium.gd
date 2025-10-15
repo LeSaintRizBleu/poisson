@@ -1,7 +1,7 @@
 extends Node2D
 class_name Aquarium
 
-var tankGhost: PackedScene = preload("res://core/tank/TankGhost.tscn")
+var tank_ghost: PackedScene = preload("res://core/tank/TankGhost.tscn")
 var tank: PackedScene = preload("res://core/tank/Tank.tscn")
 
 @onready var ghosts: Node2D = $Ghosts
@@ -12,7 +12,7 @@ func _ready() -> void:
 	init()
 
 func init() -> void:
-	var data: Dictionary = Save.getAquariums()
+	var data: Dictionary = Save.get_aquariums()
 	for id: String in data.keys():
 		var aquarium: Dictionary = data[id]
 		if !aquarium.is_empty():
@@ -25,19 +25,19 @@ func init() -> void:
 			instance.id = id
 			structures.add_child(instance)
 
-func createTankGhost(type: String) -> void:
-	if Save.getMoney() < 100:
-		errorPopup("Vous n'avez pas assez d'argent, l'aquarium coute 100 $")
+func create_tank_ghost(type: String) -> void:
+	if Save.get_money() < 100: #TODO fix  mettre prix reel de l'aquarium
+		add_error_popup("Vous n'avez pas assez d'argent, l'aquarium coute 100 $")
 	elif ghosts.get_child_count() == 0:
-		var instance: TankGhost = tankGhost.instantiate()
+		var instance: TankGhost = tank_ghost.instantiate()
 		instance.type = type
 		ghosts.add_child(instance)
-		instance.createTank.connect(createTank)
-		instance.error.connect(errorPopup)
+		instance.create_tank.connect(create_tank)
+		instance.error.connect(add_error_popup)
 
-func createTank(pos: Vector2, type: String) -> void:
-	var id: String = Save.addAquirium(pos, type)
-	Save.saveData()
+func create_tank(pos: Vector2, type: String) -> void:
+	var id: String = Save.add_aquirium(pos, type)
+	Save.save_data()
 	var instance: Tank = tank.instantiate()
 	instance.id = id
 	instance.global_position = pos
@@ -45,7 +45,7 @@ func createTank(pos: Vector2, type: String) -> void:
 	structures.add_child(instance)
 
 func _on_aquarium_hud_create_tank(type: String) -> void:
-	createTankGhost(type)
+	create_tank_ghost(type)
 
-func errorPopup(content: String) -> void:
-	hud.errorPopup(content)
+func add_error_popup(content: String) -> void:
+	hud.add_error_popup(content)

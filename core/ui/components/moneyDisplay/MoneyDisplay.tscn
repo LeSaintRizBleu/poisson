@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://vw28hqimg17m"]
 
-[ext_resource type="Script" uid="uid://daqedh3nxyqr" path="res://core/ui/components/moneyDisplay/money_display.gd" id="1_41iry"]
+[ext_resource type="Script" uid="uid://daqedh3nxyqr" path="res://core/ui/components/moneyDisplay/MoneyDisplay.gd" id="1_41iry"]
 
 [node name="MoneyDisplay" type="Label"]
 offset_right = 41.0

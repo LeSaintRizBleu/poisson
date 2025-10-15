@@ -5,7 +5,7 @@ class_name Fish
 @export var orbit_radius: float = 10.0
 @export var rotation_speed: float = 5.0
 
-@onready var sprite: Sprite2D = $Visuals/Sprite
+@onready var sprite: Sprite2D = $Visuals/Sprite2D
 @onready var swim_particules: CPUParticles2D = $Visuals/SwimParticules
 @onready var visuals:Node2D = $Visuals
 
@@ -39,8 +39,11 @@ func init(type: String) -> void:
 	var url: String = "res://assets/fishes/" + type + ".png"
 	var texture: CompressedTexture2D = load(url)
 	sprite.texture = texture
-	var randomScale: float = randf_range(0.75, 1.5)
-	sprite.scale = Vector2(randomScale, randomScale)
+	var random_scale: float = randf_range(0.75, 1.5)
+	sprite.scale = Vector2(random_scale, random_scale)
+	var darkness: float = randf_range(0.0, 0.25)
+	var shader_material: ShaderMaterial = sprite.material as ShaderMaterial
+	shader_material.set_shader_parameter("darkness", darkness)
 
 	var width: float = texture.get_width()
 	var height: float = texture.get_height()

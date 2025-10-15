@@ -10,25 +10,25 @@ var data: Dictionary = {
 signal update_gold
 
 func _ready() -> void:
-	loadData()
+	load_data()
 	clear()
 
-func getAquariums() -> Dictionary:
+func get_aquariums() -> Dictionary:
 	var aquariums: Dictionary = data["aquariums"]
 	return aquariums.duplicate(true)
 
-func addAquirium(pos: Vector2, type: String) -> String:
+func add_aquirium(pos: Vector2, type: String) -> String:
 	var aquariums: Dictionary = data["aquariums"]
-	var aquariumId: String = "aquarium_%s" % aquariums.size()
-	aquariums[aquariumId] = {
+	var aquarium_id: String = "aquarium_%s" % aquariums.size()
+	aquariums[aquarium_id] = {
 		"x": pos.x,
 		"y": pos.y,
 		"fishes": {},
 		"type": type
 	}
-	return aquariumId
+	return aquarium_id
 
-func removeAquirium(id: String) -> void:
+func remove_aquirium(id: String) -> void:
 	var aquariums: Dictionary = data["aquariums"]
 	if not aquariums.has(id):
 		print("Aquarium ID not found: " + id)
@@ -37,7 +37,7 @@ func removeAquirium(id: String) -> void:
 
 
 
-func addFishToAquarium(id: String, fish: String) -> void:
+func add_fish_to_aquarium(id: String, fish: String) -> void:
 	var aquariums: Dictionary = data["aquariums"]
 	if not aquariums.has(id):
 		print("Aquarium ID not found: " + id)
@@ -45,7 +45,7 @@ func addFishToAquarium(id: String, fish: String) -> void:
 	var fishes: Dictionary = data["aquariums"][id]["fishes"]
 	fishes[fish] = fishes.get(fish, 0) + 1
 
-func removeFishFromAquarium(id: String, fish: String) -> void:
+func remove_fish_from_aquarium(id: String, fish: String) -> void:
 	var aquariums: Dictionary = data["aquariums"]
 	if not aquariums.has(id):
 		print("Aquarium ID not found: " + id)
@@ -58,27 +58,27 @@ func removeFishFromAquarium(id: String, fish: String) -> void:
 	if fishes[fish] <= 0:
 		fishes.erase(fish)
 
-func getFishesInAquarium(id: String) -> Dictionary:
+func get_fishes_in_aquarium(id: String) -> Dictionary:
 	var aquariums: Dictionary = data["aquariums"]
 	var aquarium: Dictionary = aquariums.get(id, {})
 	var fishes: Dictionary = aquarium.get("fishes", {})
 	return fishes.duplicate(true)
 
-func getAquarium(id: String) -> Dictionary:
+func get_aquarium(id: String) -> Dictionary:
 	var aquariums: Dictionary = data["aquariums"]
 	var aquarium: Dictionary = aquariums.get(id, {})
 	return aquarium.duplicate(true)
 
 
-func getInventory() -> Dictionary:
+func get_inventory() -> Dictionary:
 	var inventory: Dictionary = data["inventory"]
 	return inventory.duplicate(true)
 
-func addFishToInventory(fish: String) -> void:
+func add_fish_to_inventory(fish: String) -> void:
 	var inventory: Dictionary = data["inventory"]
 	inventory[fish] = inventory.get(fish, 0) + 1
 
-func removeFishFromInventory(fish: String) -> void:
+func remove_fish_from_inventory(fish: String) -> void:
 	var inventory: Dictionary = data["inventory"]
 	if not inventory.has(fish):
 		print("Fish not found: " + fish)
@@ -89,57 +89,57 @@ func removeFishFromInventory(fish: String) -> void:
 
 
 
-func loadData() -> void:
-	var saveFIle: FileAccess = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
-	if saveFIle:
+func load_data() -> void:
+	var save_file: FileAccess = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
+	if save_file:
 		var json: JSON = JSON.new()
-		var parseError: Error = json.parse(saveFIle.get_as_text())
-		if parseError == OK:
+		var parse_error: Error = json.parse(save_file.get_as_text())
+		if parse_error == OK:
 			data = json.get_data()
-		saveFIle.close()
+		save_file.close()
 	else:
 		print("Missing save file")
 
-func saveData() -> void:
-	var saveFile: FileAccess = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
-	if saveFile:
-		saveFile.store_string(JSON.stringify(data))
-		saveFile.close()
+func save_data() -> void:
+	var save_file: FileAccess = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+	if save_file:
+		save_file.store_string(JSON.stringify(data))
+		save_file.close()
 	else:
 		print("Error saving data")
 
 func clear() -> void:
-	var currentId: int = 0
-	var newAquarium: Dictionary
+	var current_id: int = 0
+	var new_aquarium: Dictionary
 	var aquariums: Dictionary = data["aquariums"]
 	for aquarium: Dictionary in aquariums.values():
 		if aquarium != {}:
-			var aquariumId: String = "aquarium_%s" % currentId
-			newAquarium[aquariumId] = aquarium 
-			currentId += 1
-	data["aquariums"] = newAquarium
+			var aquarium_id: String = "aquarium_%s" % current_id
+			new_aquarium[aquarium_id] = aquarium 
+			current_id += 1
+	data["aquariums"] = new_aquarium
 
 
-func getMoney() -> int:
+func get_money() -> int:
 	return data["money"]
 
-func addMoney(amount: int) -> void:
+func add_money(amount: int) -> void:
 	data["money"] += amount
 	update_gold.emit()
-	saveData()
+	save_data()
 
-func subMoney(amount: int) -> void:
+func sub_money(amount: int) -> void:
 	data["money"] -= amount
 	update_gold.emit()
-	saveData()
+	save_data()
 	
-func checkMoney(amount: int) -> bool:
+func check_money(amount: int) -> bool:
 	return data["money"] >= amount
 	
-func spendMoney(amount: int) -> bool:
+func spend_money(amount: int) -> bool:
 	if data["money"] < amount:
 		return false
 	data["money"] -= amount
 	update_gold.emit()
-	saveData()
+	save_data()
 	return true

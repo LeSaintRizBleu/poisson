@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://emlhy8hilx00"]
 
-[ext_resource type="Script" uid="uid://03yckactusbs" path="res://core/ui/aquariumHUD/aquarium_hud.gd" id="1_kg4aj"]
-[ext_resource type="PackedScene" uid="uid://vw28hqimg17m" path="res://core/ui/components/moneyDisplay/money_display.tscn" id="2_8yqsc"]
+[ext_resource type="Script" uid="uid://03yckactusbs" path="res://core/ui/aquariumHUD/AquariumHUD.gd" id="1_kg4aj"]
+[ext_resource type="PackedScene" uid="uid://vw28hqimg17m" path="res://core/ui/components/moneyDisplay/MoneyDisplay.tscn" id="2_8yqsc"]
 [ext_resource type="PackedScene" uid="uid://c6qmtkj61lgup" path="res://core/ui/errorPopup/ErrorPopupManager.tscn" id="2_nd0lw"]
 [ext_resource type="PackedScene" uid="uid://cobv8ufbqehcx" path="res://core/ui/aquariumShop/AquariumShop.tscn" id="3_bamba"]
 
@@ -54,4 +54,4 @@ layout_mode = 2
 
 [connection signal="pressed" from="MarginContainer/Shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="MarginContainer/Map" to="." method="_on_map_pressed"]
-[connection signal="createTank" from="AquariumShop" to="." method="_on_aquarium_shop_create_tank"]
+[connection signal="create_tank" from="AquariumShop" to="." method="_on_aquarium_shop_create_tank"]

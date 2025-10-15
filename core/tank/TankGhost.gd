@@ -6,20 +6,20 @@ var type: String
 
 @onready var sprite: Sprite2D = $Sprite2D
 
-signal createTank
+signal create_tank
 signal error
 
 func _ready() -> void:
-	Context.ghostOn = true
+	Context.ghost_on = true
 
 func _process(_delta: float) -> void:
-	global_position = get_pos_in_grid()
+	global_position = _get_pos_in_grid()
 	if can_be_placed == 0:
 		sprite.modulate = Color(0, 1, 0, 0.5)
 	else:
 		sprite.modulate = Color(1, 0, 0, 0.5)
 
-func get_pos_in_grid() -> Vector2:
+func _get_pos_in_grid() -> Vector2:
 	return get_global_mouse_position().snapped(Vector2(128, 128))
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -32,14 +32,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func create_struct() -> void:
 	if can_be_placed == 0:
-		Save.subMoney(getTankPriceForSize())
-		createTank.emit(get_pos_in_grid(), type)
+		Save.sub_money(_get_tank_price_for_size())
+		create_tank.emit(_get_pos_in_grid(), type)
 		destroy()
 	else:
 		error.emit("L'objet ne peut pas être placé ici, l'espace n'est pas libre.")
 
 func destroy() -> void:
-	Context.ghostOn = false
+	Context.ghost_on = false
 	queue_free()
 
 func _on_area_2d_area_entered(_area: Area2D) -> void:
@@ -48,7 +48,7 @@ func _on_area_2d_area_entered(_area: Area2D) -> void:
 func _on_area_2d_area_exited(_area: Area2D) -> void:
 	can_be_placed -= 1
 
-func getTankPriceForSize() -> int:
+func _get_tank_price_for_size() -> int:
 	var price: int = 0
 	match type:
 		"small":

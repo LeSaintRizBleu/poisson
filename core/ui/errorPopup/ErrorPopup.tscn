@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://be4n16tmr8s65"]
 
-[ext_resource type="Script" uid="uid://d2wgur21xkhq7" path="res://core/ui/errorPopup/error_popup.gd" id="1_pf3y6"]
+[ext_resource type="Script" uid="uid://d2wgur21xkhq7" path="res://core/ui/errorPopup/ErrorPopup.gd" id="1_pf3y6"]
 
 [node name="ErrorPopup" type="Container"]
 custom_minimum_size = Vector2(200, 125)

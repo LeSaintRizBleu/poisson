@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dqx33048x87lx"]
 
 [ext_resource type="Script" uid="uid://ltbon0l36c0b" path="res://core/visualisation/Visualisation.gd" id="1_br2wl"]
-[ext_resource type="Texture2D" uid="uid://c0fnd7kxo1lto" path="res://assets/backgrounds/underwater-fantasy-preview.png" id="2_kmy5b"]
-[ext_resource type="Shader" uid="uid://d0mjmb0u4jqmc" path="res://shader/water.gdshader" id="3_vwdde"]
+[ext_resource type="Texture2D" uid="uid://bgqgem08ycns" path="res://assets/backgrounds/underwater-fantasy-preview.png" id="2_kmy5b"]
+[ext_resource type="Shader" uid="uid://d0mjmb0u4jqmc" path="res://shader/Water.gdshader" id="3_vwdde"]
 [ext_resource type="Shader" uid="uid://b4fdwrhrydc8u" path="res://shader/WaterReflection.gdshader" id="4_q6bfu"]
 [ext_resource type="PackedScene" uid="uid://3rgskf5ypkbr" path="res://core/ui/tankHUD/TankHUD.tscn" id="5_fcrf0"]
 
@@ -58,5 +58,5 @@ color = Color(0, 1, 1, 1)
 
 [node name="TankHud" parent="." instance=ExtResource("5_fcrf0")]
 
-[connection signal="addFish" from="TankHud" to="." method="_on_tank_hud_add_fish"]
-[connection signal="deleteTank" from="TankHud" to="." method="_on_tank_hud_delete_tank"]
+[connection signal="add_fish" from="TankHud" to="." method="_on_tank_hud_add_fish"]
+[connection signal="delete_tank" from="TankHud" to="." method="_on_tank_hud_delete_tank"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cobv8ufbqehcx"]
 
-[ext_resource type="Script" uid="uid://dk0g0embymee0" path="res://core/ui/aquariumShop/aquarium_shop.gd" id="1_sxa4d"]
+[ext_resource type="Script" uid="uid://dk0g0embymee0" path="res://core/ui/aquariumShop/AquariumShop.gd" id="1_sxa4d"]
 
 [node name="AquariumShop" type="Control"]
 visible = false
