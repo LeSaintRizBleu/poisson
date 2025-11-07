@@ -7,9 +7,17 @@ var tank: PackedScene = preload("res://core/tank/Tank.tscn")
 @onready var ghosts: Node2D = $Ghosts
 @onready var structures: Node2D = $Structures
 @onready var hud: AquariumHUD = $AquariumHud
+@onready var grid: Sprite2D = $Grid
 
 func _ready() -> void:
 	init()
+
+func _process(_delta: float) -> void:
+	var show_grid: bool = Context.ghost_on
+	var shader_material: ShaderMaterial = grid.material as ShaderMaterial
+	shader_material.set_shader_parameter("show_sprite", show_grid)
+	if show_grid:
+		shader_material.set_shader_parameter("mouse_position", get_global_mouse_position())
 
 func init() -> void:
 	var data: Dictionary = Save.get_aquariums()

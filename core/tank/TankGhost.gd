@@ -4,6 +4,8 @@ class_name TankGhost
 var can_be_placed: int = 0
 var type: String
 
+var grid_size: Vector2 = Vector2(32, 32)
+
 @onready var sprite: Sprite2D = $Sprite2D
 
 signal create_tank
@@ -14,13 +16,14 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	global_position = _get_pos_in_grid()
+	var shader_material: ShaderMaterial = sprite.material as ShaderMaterial
 	if can_be_placed == 0:
-		sprite.modulate = Color(0, 1, 0, 0.5)
+		shader_material.set_shader_parameter("target_color", Vector4(0.0, 1.0, 0.0, 0.5))
 	else:
-		sprite.modulate = Color(1, 0, 0, 0.5)
+		shader_material.set_shader_parameter("target_color", Vector4(1.0, 0.0, 0.0, 0.5))
 
 func _get_pos_in_grid() -> Vector2:
-	return get_global_mouse_position().snapped(Vector2(128, 128))
+	return get_global_mouse_position().snapped(grid_size)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
