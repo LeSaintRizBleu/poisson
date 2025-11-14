@@ -28,13 +28,14 @@ func init() -> void:
 			var x: float = aquarium["x"]
 			var y: float = aquarium["y"]
 			var pos: Vector2 = Vector2(x, y)
-			instance.type = aquarium["type"]
+			var url: String = "res://resources/aquariumTypes/"+aquarium["type"]+".tres"
+			instance.type = load(url)
 			instance.global_position = pos
 			instance.id = id
 			structures.add_child(instance)
 
-func create_tank_ghost(type: String) -> void:
-	if Save.get_money() < 100: #TODO fix  mettre prix reel de l'aquarium
+func create_tank_ghost(type: AquariumType) -> void:
+	if Save.get_money() < type.get_price():
 		add_error_popup("Vous n'avez pas assez d'argent, l'aquarium coute 100 $")
 	elif ghosts.get_child_count() == 0:
 		var instance: TankGhost = tank_ghost.instantiate()
@@ -43,8 +44,8 @@ func create_tank_ghost(type: String) -> void:
 		instance.create_tank.connect(create_tank)
 		instance.error.connect(add_error_popup)
 
-func create_tank(pos: Vector2, type: String) -> void:
-	var id: String = Save.add_aquirium(pos, type)
+func create_tank(pos: Vector2, type: AquariumType) -> void:
+	var id: String = Save.add_aquirium(pos, type.get_id())
 	Save.save_data()
 	var instance: Tank = tank.instantiate()
 	instance.id = id
@@ -52,7 +53,7 @@ func create_tank(pos: Vector2, type: String) -> void:
 	instance.type = type
 	structures.add_child(instance)
 
-func _on_aquarium_hud_create_tank(type: String) -> void:
+func _on_aquarium_hud_create_tank(type: AquariumType) -> void:
 	create_tank_ghost(type)
 
 func add_error_popup(content: String) -> void:

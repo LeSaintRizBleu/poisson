@@ -11,7 +11,9 @@ class_name Visualisation
 var shoal: PackedScene = preload("res://core/shoal/Shoal.tscn")
 var fish: PackedScene = preload("res://core/fish/Fish.tscn")
 var tank_inventory: PackedScene = preload("res://core/ui/inventory/TankInventory.tscn")
+
 var id: String
+var type: AquariumType
 
 var offset: float = 100.0
 
@@ -19,6 +21,7 @@ var aquarium_url: String = "res://core/aquarium/Aquarium.tscn"
 
 func _ready() -> void:
 	id = Context.tank_id
+	type = Context.type
 	reload_fishes()
 
 func reload_fishes() -> void:
@@ -60,6 +63,7 @@ func quit() -> void:
 func _on_tank_hud_add_fish() -> void:
 	var inventoryInstance: TankInventory = tank_inventory.instantiate()
 	inventoryInstance.id = id
+	inventoryInstance.type = type
 	add_child(inventoryInstance)
 	inventoryInstance.reload_fishes.connect(reload_fishes)
 

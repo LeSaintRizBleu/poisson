@@ -5,6 +5,7 @@ class_name TankInventory
 @onready var inventory_container: ItemList = $MarginContainer/HSplitContainer/Inventory/VBoxContainer/InventoryList
 @onready var error_popup_manager: ErrorPopupManager = $ErrorPopupManager
 
+var type: AquariumType
 var id: String = ""
 
 signal reload_fishes
@@ -47,12 +48,11 @@ func _on_inventory_list_item_selected(index: int) -> void:
 	var data: Dictionary = Save.get_aquarium(id)
 	var fishes_in: int = 0
 	var fishes: Dictionary = data["fishes"]
-	var type: String = data["type"]
-	var size: int = _get_size_for_type(type)
+	var capacity: int = type.get_capacity()
 	for v: int in fishes.values():
 		fishes_in += v
 
-	if fishes_in < size:
+	if fishes_in < capacity:
 		var fish: String = inventory_container.get_item_text(index)
 		Save.add_fish_to_aquarium(id, fish)
 		Save.remove_fish_from_inventory(fish)
@@ -61,17 +61,6 @@ func _on_inventory_list_item_selected(index: int) -> void:
 		load_inventory()
 	else:
 		error_popup_manager.add_popup("L'aquarium est plein, vous ne pouvez pas ajouter de poisson")
-
-func _get_size_for_type(type: String) -> int:
-	var size: int = 0
-	match type:
-		"small":
-			size = 10
-		"medium":
-			size = 25
-		"big":
-			size = 60
-	return size
 
 func _on_quit_pressed() -> void:
 	quit()

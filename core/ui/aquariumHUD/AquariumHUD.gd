@@ -47,6 +47,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			if is_shop_open:
 				close_shop()
 
-func _on_aquarium_shop_create_tank(type: String) -> void:
+func _on_aquarium_shop_create_tank(type: AquariumType) -> void:
 	close_shop()
 	create_tank.emit(type)

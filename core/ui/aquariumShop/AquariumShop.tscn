@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cobv8ufbqehcx"]
+[gd_scene load_steps=6 format=3 uid="uid://cobv8ufbqehcx"]
 
 [ext_resource type="Script" uid="uid://dk0g0embymee0" path="res://core/ui/aquariumShop/AquariumShop.gd" id="1_sxa4d"]
+[ext_resource type="PackedScene" uid="uid://b8alhie5cr31h" path="res://core/ui/aquariumShop/AquariumShopButton.tscn" id="2_oittu"]
+[ext_resource type="Resource" uid="uid://f4j0gg3hdbmk" path="res://resources/aquariumTypes/small.tres" id="3_kboxf"]
+[ext_resource type="Resource" uid="uid://dc5vrluvnx13o" path="res://resources/aquariumTypes/medium.tres" id="4_1a85c"]
+[ext_resource type="Resource" uid="uid://d0mgtfyv55m3g" path="res://resources/aquariumTypes/big.tres" id="5_h342i"]
 
 [node name="AquariumShop" type="Control"]
 visible = false
@@ -39,24 +43,18 @@ custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Small" type="Button" parent="MarginContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="AquariumShopButton" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("2_oittu")]
 layout_mode = 2
-text = "Small Aquarium"
-autowrap_mode = 2
+type = ExtResource("3_kboxf")
 
-[node name="Medium" type="Button" parent="MarginContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="AquariumShopButton2" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("2_oittu")]
 layout_mode = 2
-text = "Medium Aquarium"
-autowrap_mode = 2
+type = ExtResource("4_1a85c")
 
-[node name="Big" type="Button" parent="MarginContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="AquariumShopButton3" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("2_oittu")]
 layout_mode = 2
-text = "Big Aquarium"
-autowrap_mode = 2
+type = ExtResource("5_h342i")
 
-[connection signal="pressed" from="MarginContainer/ScrollContainer/HBoxContainer/Small" to="." method="_on_small_pressed"]
-[connection signal="pressed" from="MarginContainer/ScrollContainer/HBoxContainer/Medium" to="." method="_on_medium_pressed"]
-[connection signal="pressed" from="MarginContainer/ScrollContainer/HBoxContainer/Big" to="." method="_on_big_pressed"]
+[connection signal="shop_button_pressed" from="MarginContainer/ScrollContainer/HBoxContainer/AquariumShopButton" to="." method="_on_aquarium_shop_button_shop_button_pressed"]
+[connection signal="shop_button_pressed" from="MarginContainer/ScrollContainer/HBoxContainer/AquariumShopButton2" to="." method="_on_aquarium_shop_button_shop_button_pressed"]
+[connection signal="shop_button_pressed" from="MarginContainer/ScrollContainer/HBoxContainer/AquariumShopButton3" to="." method="_on_aquarium_shop_button_shop_button_pressed"]

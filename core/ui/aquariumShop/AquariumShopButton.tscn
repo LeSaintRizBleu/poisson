@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8alhie5cr31h"]
+
+[ext_resource type="Script" uid="uid://c3rqlwllqus0i" path="res://core/ui/aquariumShop/AquariumShopButton.gd" id="1_whs4s"]
+
+[node name="AquariumShopButton" type="Button"]
+script = ExtResource("1_whs4s")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AquariumType" load_steps=2 format=3 uid="uid://d0mgtfyv55m3g"]
+
+[ext_resource type="Script" uid="uid://cuwycvfr7y6rt" path="res://core/resources/AquariumType.gd" id="1_wwbt7"]
+
+[resource]
+script = ExtResource("1_wwbt7")
+id = "big"
+name = "Big Aquarium"
+price = 60
+capacity = 200
+color = Color(1, 0, 0, 1)
+metadata/_custom_type_script = "uid://cuwycvfr7y6rt"

@@ -2,7 +2,7 @@ extends Node2D
 class_name TankGhost
 
 var can_be_placed: int = 0
-var type: String
+var type: AquariumType
 
 var grid_size: Vector2 = Vector2(32, 32)
 
@@ -35,7 +35,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func create_struct() -> void:
 	if can_be_placed == 0:
-		Save.sub_money(_get_tank_price_for_size())
+		Save.sub_money(type.get_price())
 		create_tank.emit(_get_pos_in_grid(), type)
 		destroy()
 	else:
@@ -50,14 +50,3 @@ func _on_area_2d_area_entered(_area: Area2D) -> void:
 
 func _on_area_2d_area_exited(_area: Area2D) -> void:
 	can_be_placed -= 1
-
-func _get_tank_price_for_size() -> int:
-	var price: int = 0
-	match type:
-		"small":
-			price = 50
-		"medium":
-			price = 100
-		"big":
-			price = 200
-	return price
