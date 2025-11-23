@@ -23,7 +23,8 @@ var capture: float = 0.0
 var fish: String
 var duration: float
 var difficulty: int
-var size: int
+var bar_size: int
+var fish_info: FishInfo
 
 var catch_popup: PackedScene = preload("res://core/ui/popup/CatchPopUp.tscn")
 var escape_popup: PackedScene = preload("res://core/ui/popup/EscapePopUp.tscn")
@@ -44,18 +45,26 @@ func _process_energy(delta: float) -> void:
 		catch()
 
 func _ready() -> void:
-	fish = Context.fish
-	difficulty = Infos.get_fishes_info(fish)["difficulty"]
-	size = Infos.get_fishes_info(fish)["size"]
-	duration = Infos.get_fishes_info(fish)["duration"]
+	fish = get_random_fish()
+	var url: String = "res://resources/fishesInfo/"+fish+".tres"
+	fish_info = load(url)
+	difficulty = fish_info.get_difficulty()
+	bar_size = fish_info.get_bar_size()
+	duration = fish_info.get_bar_duration()
 	add_green_zone()
 	start_movement()
+
+func get_random_fish() -> String:
+	if randi() % 2 == 0:
+		return "test1"
+	else:
+		return "test2"
 
 func catch() -> void:
 	_clear_green_zone()
 	stop_movement()
 	var instance: CatchPopUp = catch_popup.instantiate()
-	instance.fish = fish
+	instance.fish_info = fish_info
 	add_child(instance)
 
 func escape() -> void:
@@ -71,20 +80,20 @@ func add_green_zone() -> void:
 		add_random_green_zone()
 
 func add_sym_green_zone() -> void:
-	var pos1: int = randi_range(0, 250 - size)
-	var pos2: int = 500 - size - pos1
+	var pos1: int = randi_range(0, 250 - bar_size)
+	var pos2: int = 500 - bar_size - pos1
 	_add_green_zone_to_slider(pos1)
 	_add_green_zone_to_slider(pos2)
 
 func add_random_green_zone() -> void:
-	var pos: int = randi_range(0, 500 - size)
+	var pos: int = randi_range(0, 500 - bar_size)
 	_add_green_zone_to_slider(pos)
 
 func _add_green_zone_to_slider(pos: int) -> void:
-	green_zones.append({"pos": pos, "size": size})
+	green_zones.append({"pos": pos, "size": bar_size})
 	var color_rect: ColorRect = ColorRect.new()
 	color_rect.color = Color.WEB_GREEN
-	color_rect.size = Vector2(30, size)
+	color_rect.size = Vector2(30, bar_size)
 	color_rect.position = Vector2(1000, 74 + pos)
 	green.add_child(color_rect)
 

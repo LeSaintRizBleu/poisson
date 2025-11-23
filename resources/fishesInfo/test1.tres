@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishInfo" load_steps=2 format=3 uid="uid://b2hnu6enlkklr"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_d2s1f"]
+
+[resource]
+script = ExtResource("1_d2s1f")
+name = "test1"
+description = "Gros poisson bleuté qui va vite tah les oufs. nan vrament la vitesse du man est impressionantes."
+speed = 80
+max_in_shoal = 5
+rotation = 0.1
+orbit_radius = 50
+difficulty = 2
+bar_size = 30
+bar_duration = 0.8
+metadata/_custom_type_script = "uid://c6xuvyeaaxd0g"

@@ -43,8 +43,8 @@ func check_bound() -> void:
 
 	direction = new_direction.normalized()
 
-func init(fish: String, width: float, height: float) -> void:
+func init(fish_info: FishInfo, width: float, height: float) -> void:
 	aquarium_width = width
 	aquarium_height = height
-	max_offset = Infos.get_max_offset(fish) + 25
-	speed = Infos.get_fishes_info(fish)["speed"]
+	max_offset = fish_info.get_max_offset()
+	speed = fish_info.get_speed()

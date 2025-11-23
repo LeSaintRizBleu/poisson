@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Infos="*res://core/globals/Infos.gd"
 Save="*res://core/globals/Save.gd"
 Context="*res://core/globals/Context.gd"
 

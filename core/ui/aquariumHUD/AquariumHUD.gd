@@ -15,10 +15,6 @@ var is_shop_open: bool = false
 signal create_tank
 
 func _on_map_pressed() -> void:
-	if randi() % 2 == 0:
-		Context.fish = "test1"
-	else:
-		Context.fish = "test2"
 	get_tree().change_scene_to_file(map_url)
 
 

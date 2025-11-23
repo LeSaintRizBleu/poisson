@@ -28,33 +28,34 @@ func reload_fishes() -> void:
 	clear()
 	fishes_in = Save.get_fishes_in_aquarium(id)
 	for fish_type: String in fishes_in:
-		var data: Dictionary = Infos.get_fishes_info(fish_type)
+		var url: String = "res://resources/fishesInfo/"+fish_type+".tres"
+		var fish_info: FishInfo = load(url)
 		var n: int = fishes_in[fish_type]
-		var max_fishes: int = data["max_in_shoals"]
+		var max_fishes: int = fish_info.get_max_in_shoal()
 		var shoals_number: int = ceil(float(n) / max_fishes)
 		for s: int in range(shoals_number):
-			var current_soal: Shoal = create_shoal(fish_type)
+			var current_soal: Shoal = create_shoal(fish_info)
 			for i: int in range( min(max_fishes, n) ):
-				create_fish(current_soal, fish_type)
+				create_fish(current_soal, fish_info)
 			n -= max_fishes
 
 func clear() -> void:
 	for child in shoals.get_children():
 		shoals.remove_child(child)
 
-func create_shoal(fish_type: String) -> Shoal:
+func create_shoal(fish_info: FishInfo) -> Shoal:
 	var shoal_instance: Shoal = shoal.instantiate()
 	var x: float = randf_range(offset, width - offset)
 	var y: float = randf_range(offset, height - offset)
 	shoal_instance.global_position = Vector2(x, y)
 	shoals.add_child(shoal_instance)
-	shoal_instance.init(fish_type, width, height)
+	shoal_instance.init(fish_info, width, height)
 	return shoal_instance
 
-func create_fish(currennt_shoal: Shoal, fish_type: String) -> void:
+func create_fish(currennt_shoal: Shoal, fish_info: FishInfo) -> void:
 	var fish_instance: Fish = fish.instantiate()
 	currennt_shoal.add_child(fish_instance)
-	fish_instance.init(fish_type)
+	fish_instance.init(fish_info)
 
 func quit() -> void:
 	Context.tank_id = ""

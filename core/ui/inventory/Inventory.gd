@@ -29,5 +29,6 @@ func quit() -> void:
 	get_tree().change_scene_to_file(map_url)
 
 func _on_load_description(fish_type: String) -> void:
-	var data: Dictionary = Infos.get_fishes_info(fish_type)
-	description.text = fish_type + " : \n" + data["description"]
+	var url: String = "res://resources/fishesInfo/"+fish_type+".tres"
+	var fish_info: FishInfo = load(url)
+	description.text = fish_type + " : \n" + fish_info.get_description()

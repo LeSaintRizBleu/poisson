@@ -26,17 +26,15 @@ func update_fish(delta: float, shoal_position: Vector2, shoal_direction: Vector2
 	sprite.flip_h = true
 	sprite.flip_v = shoal_direction.x < 0
 
-func init(type: String) -> void:
-	var data: Dictionary = Infos.get_fishes_info(type)
-	
-	orbit_speed = data["rotation"]
-	var radius: float = data["orbit_radius"]
+func init(fish_info: FishInfo) -> void:
+	orbit_speed = fish_info.get_rotation()
+	var radius: float = fish_info.get_orbit_radius()
 
 	orbit_radius = randf_range(radius/2, radius*2)
 	orbit_speed = randf_range(orbit_speed, orbit_speed*4)
 	rotation_speed = randf_range(2.0, 10.0)
 
-	var url: String = "res://assets/fishes/" + type + ".png"
+	var url: String = "res://assets/fishes/" + fish_info.get_fish_name() + ".png"
 	var texture: CompressedTexture2D = load(url)
 	sprite.texture = texture
 	var random_scale: float = randf_range(0.75, 1.5)
