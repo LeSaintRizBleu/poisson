@@ -3,6 +3,7 @@ extends Resource
 
 @export var name: String
 @export var description: String
+@export var sprite: CompressedTexture2D
 
 # used for visualisation
 @export var speed: int
@@ -44,3 +45,6 @@ func get_bar_duration() -> float:
 
 func get_description() -> String:
 	return description
+
+func get_sprite() -> CompressedTexture2D:
+	return sprite

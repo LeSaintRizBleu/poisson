@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="FishInfo" load_steps=2 format=3 uid="uid://ko5hio8m04xf"]
+[gd_resource type="Resource" script_class="FishInfo" load_steps=3 format=3 uid="uid://ko5hio8m04xf"]
 
 [ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_j4jb2"]
+[ext_resource type="Texture2D" uid="uid://4htqgebx2n1g" path="res://assets/fishes/test2.png" id="2_lo7ux"]
 
 [resource]
 script = ExtResource("1_j4jb2")
 name = "test2"
 description = "Petit poisson vert. il est la il chill. rien de particulier sur lui."
+sprite = ExtResource("2_lo7ux")
 speed = 30
 max_in_shoal = 15
 rotation = 0.1

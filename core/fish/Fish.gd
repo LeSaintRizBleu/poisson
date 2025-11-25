@@ -34,17 +34,15 @@ func init(fish_info: FishInfo) -> void:
 	orbit_speed = randf_range(orbit_speed, orbit_speed*4)
 	rotation_speed = randf_range(2.0, 10.0)
 
-	var url: String = "res://assets/fishes/" + fish_info.get_fish_name() + ".png"
-	var texture: CompressedTexture2D = load(url)
-	sprite.texture = texture
+	sprite.texture = fish_info.get_sprite()
 	var random_scale: float = randf_range(0.75, 1.5)
 	sprite.scale = Vector2(random_scale, random_scale)
 	var darkness: float = randf_range(0.0, 0.25)
 	var shader_material: ShaderMaterial = sprite.material as ShaderMaterial
 	shader_material.set_shader_parameter("darkness", darkness)
 
-	var width: float = texture.get_width()
-	var height: float = texture.get_height()
+	var width: float = fish_info.get_sprite().get_width()
+	var height: float = fish_info.get_sprite().get_height()
 
 	swim_particules.position = Vector2(-width/3, 0)
 	swim_particules.emission_sphere_radius = height/3
