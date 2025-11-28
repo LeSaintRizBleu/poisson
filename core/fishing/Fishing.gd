@@ -21,8 +21,8 @@ var strength: float = 30.0
 var capture: float = 0.0
 
 var fish: String
-var duration: float
 var difficulty: int
+var bar_speed: float
 var bar_size: int
 var fish_info: FishInfo
 
@@ -50,7 +50,7 @@ func _ready() -> void:
 	fish_info = load(url)
 	difficulty = fish_info.get_difficulty()
 	bar_size = fish_info.get_bar_size()
-	duration = fish_info.get_bar_duration()
+	bar_speed = fish_info.get_bar_speed()
 	add_green_zone()
 	start_movement()
 
@@ -145,7 +145,7 @@ func start_movement() -> void:
 	var target: Vector2 = up_target if moving_up else down_target
 	var full_distance: float = up_target.distance_to(down_target)
 	var current_distance: float = slider.position.distance_to(target)
-	var move_duration: float = duration * (current_distance / full_distance)
+	var move_duration: float = bar_speed * (current_distance / full_distance)
 
 	tween.tween_property(slider, "position", target, move_duration)
 	tween.tween_callback(_switch_direction)

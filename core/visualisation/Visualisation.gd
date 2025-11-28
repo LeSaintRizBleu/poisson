@@ -1,12 +1,13 @@
 extends Node2D
 class_name Visualisation
 
-@export var fishes_in: Dictionary = {}
 @export var width: float = 1152.0
 @export var height: float = 658.0
 
 @onready var shoals: Node2D = $Shoals
 @onready var hud: TankHUD = $TankHud
+
+var fishes_in: Dictionary = {}
 
 var shoal: PackedScene = preload("res://core/shoal/Shoal.tscn")
 var fish: PackedScene = preload("res://core/fish/Fish.tscn")

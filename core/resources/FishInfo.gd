@@ -1,20 +1,30 @@
 class_name FishInfo
 extends Resource
 
+## name of the fish (have to be the same as the file name)
 @export var name: String
-@export var description: String
+## small description of the fish
+@export_multiline var description: String
+##the sprite of the fish
 @export var sprite: CompressedTexture2D
 
-# used for visualisation
+@export_group("visualisation")
+## the speed of the shoal
 @export var speed: int
+## the max nuber of fishes inside a shoal
 @export var max_in_shoal: int
-@export var rotation: float
+## the rotation speed of the fishes inside the shoal 
+@export var rotation_speed: float
+## the max distance the fish can go
 @export var orbit_radius: int
 
-# used for fishing
+@export_group("fishing")
+## the type of catch
 @export var difficulty: int
+## the length of the bar
 @export var bar_size: int
-@export var bar_duration: float
+## the speed of the cursor to go from top to bottom
+@export var bar_speed: float
 
 func get_max_offset() -> float:
 	return orbit_radius * 2 + 25
@@ -28,8 +38,8 @@ func get_speed() -> int:
 func get_max_in_shoal() -> int:
 	return max_in_shoal
 
-func get_rotation() -> float:
-	return rotation
+func get_rotation_speed() -> float:
+	return rotation_speed
 
 func get_orbit_radius() -> int:
 	return orbit_radius
@@ -40,8 +50,8 @@ func get_difficulty() -> int:
 func get_bar_size() -> int:
 	return bar_size
 
-func get_bar_duration() -> float:
-	return bar_duration
+func get_bar_speed() -> float:
+	return bar_speed
 
 func get_description() -> String:
 	return description

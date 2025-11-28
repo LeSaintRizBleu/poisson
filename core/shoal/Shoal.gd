@@ -1,10 +1,10 @@
 extends Node2D
 class_name Shoal
 
-@export var speed: float = 50.0
-@export var aquarium_width: float = 1152
-@export var aquarium_height: float = 658
-@export var max_offset:float = 50.0
+var speed: float
+var aquarium_width: float
+var aquarium_height: float
+var max_offset: float
 
 var direction: Vector2 = Vector2.RIGHT
 

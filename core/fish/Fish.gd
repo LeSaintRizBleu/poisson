@@ -1,9 +1,9 @@
 extends Node2D
 class_name Fish
 
-@export var orbit_speed: float = 0.1
-@export var orbit_radius: float = 10.0
-@export var rotation_speed: float = 5.0
+var orbit_speed: float
+var orbit_radius: float
+var rotation_speed: float
 
 @onready var sprite: Sprite2D = $Visuals/Sprite2D
 @onready var swim_particules: CPUParticles2D = $Visuals/SwimParticules
@@ -27,7 +27,7 @@ func update_fish(delta: float, shoal_position: Vector2, shoal_direction: Vector2
 	sprite.flip_v = shoal_direction.x < 0
 
 func init(fish_info: FishInfo) -> void:
-	orbit_speed = fish_info.get_rotation()
+	orbit_speed = fish_info.get_rotation_speed()
 	var radius: float = fish_info.get_orbit_radius()
 
 	orbit_radius = randf_range(radius/2, radius*2)
