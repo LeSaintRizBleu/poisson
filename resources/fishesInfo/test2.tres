@@ -8,6 +8,7 @@ script = ExtResource("1_j4jb2")
 name = "test2"
 description = "Petit poisson vert. il est la il chill. rien de particulier sur lui."
 sprite = ExtResource("2_lo7ux")
+sell_value = 30
 speed = 30
 max_in_shoal = 15
 rotation_speed = 0.1

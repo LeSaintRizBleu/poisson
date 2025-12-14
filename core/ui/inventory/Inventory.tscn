@@ -79,8 +79,21 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 1
 
+[node name="Sell" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+disabled = true
+text = "Sell
+(0$)"
+
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/Sell" to="." method="_on_sell_pressed"]

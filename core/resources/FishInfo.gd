@@ -5,8 +5,10 @@ extends Resource
 @export var name: String
 ## small description of the fish
 @export_multiline var description: String
-##the sprite of the fish
+## the sprite of the fish
 @export var sprite: CompressedTexture2D
+## the sell value of the fish
+@export var sell_value: int
 
 @export_group("visualisation")
 ## the speed of the shoal
@@ -58,3 +60,6 @@ func get_description() -> String:
 
 func get_sprite() -> CompressedTexture2D:
 	return sprite
+
+func get_sell_value() -> int:
+	return sell_value
