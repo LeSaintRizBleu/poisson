@@ -18,8 +18,12 @@ func apply_texture() -> void:
 	var new_offset: Vector2 = texture.get_size()/2.0
 	fish.texture = texture
 	fish.size = new_size
-	fish.set_anchors_preset(Control.PRESET_CENTER)
 	fish.pivot_offset = new_offset
+	fish.offset_left = -new_offset.x
+	fish.offset_right = new_offset.x 
+	fish.offset_top = -new_offset.y
+	fish.offset_bottom = new_offset.y
+	fish.set_anchors_preset(Control.PRESET_CENTER)
 
 func _on_button_pressed() -> void:
 	Save.add_fish_to_inventory(fish_info.get_fish_name())

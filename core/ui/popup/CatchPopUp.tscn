@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd4mtm0l83mc1"]
+[gd_scene load_steps=8 format=3 uid="uid://cd4mtm0l83mc1"]
 
 [ext_resource type="Script" uid="uid://ckuw40hhwf25f" path="res://core/ui/popup/CatchPopUp.gd" id="1_rumn7"]
-[ext_resource type="Shader" path="res://shader/Aura.gdshader" id="2_5gyau"]
-[ext_resource type="Shader" path="res://shader/Pulse.gdshader" id="3_djt8a"]
-[ext_resource type="Texture2D" uid="uid://4htqgebx2n1g" path="res://assets/fishes/test2.png" id="4_djt8a"]
+[ext_resource type="Shader" uid="uid://olkg0epia5nt" path="res://shader/Aura.gdshader" id="2_5gyau"]
+[ext_resource type="Shader" uid="uid://dml8erjeg5sik" path="res://shader/Pulse.gdshader" id="3_djt8a"]
 
 [sub_resource type="Gradient" id="Gradient_djt8a"]
 offsets = PackedFloat32Array(0, 0.7941176, 1)
@@ -68,8 +67,7 @@ horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
+size_flags_vertical = 3
 size_flags_stretch_ratio = 50.0
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer/MarginContainer/VBoxContainer/Control"]
@@ -97,16 +95,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -13.0
-offset_top = -10.5
-offset_right = 13.0
-offset_bottom = 10.5
+offset_left = -326.0
+offset_top = -75.5
+offset_right = -326.0
+offset_bottom = -75.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
-pivot_offset = Vector2(13, 10.5)
 size_flags_vertical = 3
-texture = ExtResource("4_djt8a")
 stretch_mode = 2
 
 [node name="Desc" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
