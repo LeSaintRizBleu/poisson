@@ -14,5 +14,5 @@ rotation_speed = 0.1
 orbit_radius = 50
 difficulty = 1
 bar_size = 50
-bar_speed = 1.2
+bar_speed = 1.0
 metadata/_custom_type_script = "uid://c6xuvyeaaxd0g"

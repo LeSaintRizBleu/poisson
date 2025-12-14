@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dl88ocr0ln4e8" path="res://core/ui/popup/EscapePopUp.gd" id="1_aarwa"]
 
 [node name="EscapePopUp" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_aarwa")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

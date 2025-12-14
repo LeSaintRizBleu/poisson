@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://by46nm7dmma85"]
+
+[ext_resource type="Script" uid="uid://3i65lh5b7xj4" path="res://core/fishing/fishing_bar/FishingBar.gd" id="1_cq5jq"]
+[ext_resource type="PackedScene" uid="uid://d1wbtk4q35ftg" path="res://core/fishing/slider/Slider.tscn" id="2_6kii7"]
+
+[node name="FishingBar" type="MarginContainer"]
+offset_right = 30.0
+offset_bottom = 500.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("1_cq5jq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(30, 500)
+layout_mode = 2
+color = Color(1, 0, 0, 1)
+
+[node name="GreenZones" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Slider" parent="." instance=ExtResource("2_6kii7")]
+layout_mode = 2
+
+[connection signal="bar_stop" from="Slider" to="." method="_on_slider_bar_stop"]

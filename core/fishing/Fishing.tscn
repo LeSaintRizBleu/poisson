@@ -1,58 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvb0pidmli3tt"]
+[gd_scene load_steps=4 format=3 uid="uid://bvb0pidmli3tt"]
 
 [ext_resource type="Script" uid="uid://bdecfyn26b7pk" path="res://core/fishing/Fishing.gd" id="1_43g8x"]
 [ext_resource type="Texture2D" uid="uid://c7bv4eutgqekf" path="res://icon.svg" id="1_hlba1"]
+[ext_resource type="PackedScene" uid="uid://by46nm7dmma85" path="res://core/fishing/fishing_bar/FishingBar.tscn" id="2_e27qi"]
 
-[node name="Fishing" type="Node2D"]
+[node name="Fishing" type="CanvasLayer"]
 script = ExtResource("1_43g8x")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 1000.0
-offset_top = 74.0
-offset_right = 1030.0
-offset_bottom = 574.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(15, 250)
-color = Color(1, 0, 0, 1)
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="Green" type="Node2D" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
 
-[node name="Bar" type="Node2D" parent="."]
-position = Vector2(1000, 74)
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Slider" type="Sprite2D" parent="Bar"]
-position = Vector2(15, 495)
-scale = Vector2(0.3, 0.05)
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 texture = ExtResource("1_hlba1")
 
-[node name="EnergyLabel" type="Label" parent="."]
-offset_left = 25.0
-offset_top = 571.0
-offset_right = 194.0
-offset_bottom = 653.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EnergyLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
 text = "energy"
 
-[node name="EnergyBar" type="ProgressBar" parent="."]
-offset_left = 21.0
-offset_top = 600.0
-offset_right = 531.0
-offset_bottom = 627.0
+[node name="EnergyBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
 
-[node name="CaptureLabel" type="Label" parent="."]
-offset_left = 27.0
-offset_top = 483.0
-offset_right = 123.0
-offset_bottom = 506.0
+[node name="CaptureLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
 text = "caprute rate"
 
-[node name="CaptureBar" type="ProgressBar" parent="."]
-offset_left = 19.0
-offset_top = 510.0
-offset_right = 521.0
-offset_bottom = 537.0
+[node name="CaptureBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FishingBar" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_e27qi")]
+layout_mode = 2
+
+[connection signal="fail" from="MarginContainer/HBoxContainer/FishingBar" to="." method="_on_fishing_bar_fail"]
+[connection signal="success" from="MarginContainer/HBoxContainer/FishingBar" to="." method="_on_fishing_bar_success"]

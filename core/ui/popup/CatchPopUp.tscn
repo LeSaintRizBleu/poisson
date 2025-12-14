@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://cd4mtm0l83mc1"]
 
 [ext_resource type="Script" uid="uid://ckuw40hhwf25f" path="res://core/ui/popup/CatchPopUp.gd" id="1_rumn7"]
-[ext_resource type="Shader" uid="uid://olkg0epia5nt" path="res://shader/Aura.gdshader" id="2_5gyau"]
-[ext_resource type="Shader" uid="uid://dml8erjeg5sik" path="res://shader/Pulse.gdshader" id="3_djt8a"]
+[ext_resource type="Shader" path="res://shader/Aura.gdshader" id="2_5gyau"]
+[ext_resource type="Shader" path="res://shader/Pulse.gdshader" id="3_djt8a"]
 [ext_resource type="Texture2D" uid="uid://4htqgebx2n1g" path="res://assets/fishes/test2.png" id="4_djt8a"]
 
 [sub_resource type="Gradient" id="Gradient_djt8a"]
@@ -33,6 +33,7 @@ shader_parameter/zoom_min = 0.75000003236512
 shader_parameter/zoom_max = 1.0
 
 [node name="CatchPopUp" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_rumn7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
