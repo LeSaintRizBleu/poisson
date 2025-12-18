@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm4lb1cf04jng"]
+
+[ext_resource type="Script" uid="uid://bxn3owj22fxgr" path="res://core/fishing/fishing_line/fishing_line.gd" id="1_xtbl0"]
+
+[node name="FishingLine" type="Node2D"]
+script = ExtResource("1_xtbl0")
+
+[node name="Tip" type="Marker2D" parent="."]
+position = Vector2(125, 121)
+
+[node name="Hook" type="Marker2D" parent="."]
+position = Vector2(969, 454)
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 2.0
