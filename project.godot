@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="test"
+config/name="Poisson"
 run/main_scene="uid://bhngrng4m3cea"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://lvfgnycxa4mn"
 
 [autoload]
 
