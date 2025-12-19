@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bvb0pidmli3tt"]
 
 [ext_resource type="Script" uid="uid://bdecfyn26b7pk" path="res://core/fishing/Fishing.gd" id="1_43g8x"]
-[ext_resource type="Texture2D" uid="uid://c7bv4eutgqekf" path="res://icon.svg" id="1_hlba1"]
 [ext_resource type="PackedScene" uid="uid://by46nm7dmma85" path="res://core/fishing/fishing_bar/FishingBar.tscn" id="2_e27qi"]
+[ext_resource type="PackedScene" uid="uid://cm4lb1cf04jng" path="res://core/fishing/fishing_line/FishingLine.tscn" id="2_lfq52"]
 
 [node name="Fishing" type="CanvasLayer"]
 script = ExtResource("1_43g8x")
@@ -34,10 +34,7 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("1_hlba1")
+[node name="FishingLine" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" instance=ExtResource("2_lfq52")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

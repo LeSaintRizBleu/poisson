@@ -4,6 +4,7 @@ class_name Fishing
 @onready var energy_bar: ProgressBar = $MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/EnergyBar
 @onready var capture_bar: ProgressBar = $MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/CaptureBar
 @onready var fishing_bar: FishingBar = $MarginContainer/HBoxContainer/FishingBar
+@onready var fishing_line: FishingLine = $MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/FishingLine
 
 var green_zones: Array = []
 var is_moving: bool = true
@@ -12,6 +13,7 @@ var energy: float = 100.0
 var rate: float = 1.0
 var strength: float = 30.0
 var capture: float = 0.0
+var escape_rate: float = 10.0
 
 var fish_info: FishInfo
 
@@ -26,13 +28,16 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	is_moving = fishing_bar.slider.is_moving
+	fishing_line.is_pulling = is_moving
+	fishing_line.hook_pos = 1000 - capture * 7
 	_process_energy(delta)
 
 func _process_energy(delta: float) -> void:
 	if !is_moving: return
 	energy -= rate * delta
 	energy = clampf(energy, 0.0, 100.0)
-	capture = clampf(capture, 0.0, 100.0)
+	capture = clampf(capture, 0.0, 200.0)
+	capture -= escape_rate * delta
 	energy_bar.value = energy
 	capture_bar.value = capture
 	if energy <= 0:
@@ -59,8 +64,7 @@ func escape() -> void:
 
 
 func _on_fishing_bar_fail() -> void:
-	energy -= 25
+	energy -= escape_rate
 
 func _on_fishing_bar_success() -> void:
-	energy += 25
 	capture += strength
