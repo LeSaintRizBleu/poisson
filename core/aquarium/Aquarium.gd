@@ -3,14 +3,19 @@ class_name Aquarium
 
 var tank_ghost: PackedScene = preload("res://core/tank/TankGhost.tscn")
 var tank: PackedScene = preload("res://core/tank/Tank.tscn")
+var visitor: PackedScene = preload("res://core/visitor/Visitor.tscn")
 
 @onready var ghosts: Node2D = $Ghosts
-@onready var structures: Node2D = $Structures
+@onready var aquariums: Node2D = $NavigationRegion2D/Aquariums
+@onready var visitors: Node2D = $NavigationRegion2D/Visitors
 @onready var hud: AquariumHUD = $AquariumHud
 @onready var grid: Sprite2D = $Grid
+@onready var navigation_region: NavigationRegion2D = $NavigationRegion2D
 
 func _ready() -> void:
 	init()
+	for i in range (20):
+		add_visitor()
 
 func _process(_delta: float) -> void:
 	var show_grid: bool = Context.ghost_on
@@ -32,7 +37,8 @@ func init() -> void:
 			instance.type = load(url)
 			instance.global_position = pos
 			instance.id = id
-			structures.add_child(instance)
+			aquariums.add_child(instance)
+	rebake()
 
 func create_tank_ghost(type: AquariumType) -> void:
 	if Save.get_money() < type.get_price():
@@ -44,6 +50,15 @@ func create_tank_ghost(type: AquariumType) -> void:
 		instance.create_tank.connect(create_tank)
 		instance.error.connect(add_error_popup)
 
+func rebake() -> void:
+	if !navigation_region.is_baking():
+		navigation_region.bake_navigation_polygon()
+
+func add_visitor() -> void:
+	var instance: Visitor = visitor.instantiate()
+	instance.targets = aquariums.get_children()
+	visitors.add_child(instance)
+
 func create_tank(pos: Vector2, type: AquariumType) -> void:
 	var id: String = Save.add_aquirium(pos, type.get_id())
 	Save.save_data()
@@ -51,7 +66,8 @@ func create_tank(pos: Vector2, type: AquariumType) -> void:
 	instance.id = id
 	instance.global_position = pos
 	instance.type = type
-	structures.add_child(instance)
+	aquariums.add_child(instance)
+	rebake()
 
 func _on_aquarium_hud_create_tank(type: AquariumType) -> void:
 	create_tank_ghost(type)
