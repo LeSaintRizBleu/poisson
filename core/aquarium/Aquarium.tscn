@@ -13,9 +13,9 @@ shader_parameter/mouse_position = Vector2(0, 0)
 shader_parameter/show_sprite = true
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_elt1y"]
-vertices = PackedVector2Array(1186.3516, -48.171875, 1212.6328, 671.0469, -248.89063, 678.9375, -241.10156, -73.8125)
+vertices = PackedVector2Array(1142, 638, 10, 638, 10, 10, 1142, 10)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1196, -58, 1223, 681, -259, 689, -251, -84)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1152, 0, 1152, 648, 0, 648, 0, 0)])
 
 [node name="Aquarium" type="Node2D"]
 script = ExtResource("1_a84l0")
