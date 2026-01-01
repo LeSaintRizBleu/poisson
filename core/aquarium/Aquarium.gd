@@ -1,8 +1,8 @@
 extends Node2D
 class_name Aquarium
 
-var tank_ghost: PackedScene = preload("res://core/tank/TankGhost.tscn")
-var tank: PackedScene = preload("res://core/tank/Tank.tscn")
+var tank_ghost: PackedScene = preload("res://core/structures/tank/TankGhost.tscn")
+var tank: PackedScene = preload("res://core/structures/tank/Tank.tscn")
 var visitor: PackedScene = preload("res://core/visitor/Visitor.tscn")
 
 @onready var ghosts: Node2D = $Ghosts
@@ -40,9 +40,9 @@ func init() -> void:
 			aquariums.add_child(instance)
 	rebake()
 
-func create_tank_ghost(type: AquariumType) -> void:
+func create_tank_ghost(type: Structure) -> void:
 	if Save.get_money() < type.get_price():
-		add_error_popup("Vous n'avez pas assez d'argent, l'aquarium coute 100 $")
+		add_error_popup("Vous n'avez pas assez d'argent, l'aquarium coute %s " + str(type.get_price()) + " $")
 	elif ghosts.get_child_count() == 0:
 		var instance: TankGhost = tank_ghost.instantiate()
 		instance.type = type
@@ -69,8 +69,14 @@ func create_tank(pos: Vector2, type: AquariumType) -> void:
 	aquariums.add_child(instance)
 	rebake()
 
-func _on_aquarium_hud_create_tank(type: AquariumType) -> void:
-	create_tank_ghost(type)
-
 func add_error_popup(content: String) -> void:
 	hud.add_error_popup(content)
+
+
+func _on_aquarium_hud_create_structure(type: Structure) -> void:
+	if type.is_tank():
+		create_tank_ghost(type)
+	else:
+		print("======")
+		print(" TODO ")
+		print("======")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cprnkqjctmgg3"]
 
-[ext_resource type="Script" uid="uid://dy62n7laum258" path="res://core/tank/Tank.gd" id="1_guxb4"]
+[ext_resource type="Script" uid="uid://dy62n7laum258" path="res://core/structures/tank/Tank.gd" id="1_guxb4"]
 [ext_resource type="Texture2D" uid="uid://c7bv4eutgqekf" path="res://icon.svg" id="2_415ia"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_indpj"]

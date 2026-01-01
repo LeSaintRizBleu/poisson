@@ -54,4 +54,4 @@ layout_mode = 2
 
 [connection signal="pressed" from="MarginContainer/Shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="MarginContainer/Map" to="." method="_on_map_pressed"]
-[connection signal="create_tank" from="AquariumShop" to="." method="_on_aquarium_shop_create_tank"]
+[connection signal="create_structure_from_shop" from="AquariumShop" to="." method="_on_aquarium_shop_create_structure_from_shop"]

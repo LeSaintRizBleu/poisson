@@ -39,4 +39,4 @@ navigation_polygon = SubResource("NavigationPolygon_elt1y")
 
 [node name="AquariumHud" parent="." instance=ExtResource("2_p073m")]
 
-[connection signal="create_tank" from="AquariumHud" to="." method="_on_aquarium_hud_create_tank"]
+[connection signal="create_structure" from="AquariumHud" to="." method="_on_aquarium_hud_create_structure"]

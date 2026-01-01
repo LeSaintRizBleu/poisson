@@ -12,7 +12,7 @@ var map_url: String = "res://core/map/Map.tscn"
 
 var is_shop_open: bool = false
 
-signal create_tank
+signal create_structure
 
 func _on_map_pressed() -> void:
 	get_tree().change_scene_to_file(map_url)
@@ -43,6 +43,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			if is_shop_open:
 				close_shop()
 
-func _on_aquarium_shop_create_tank(type: AquariumType) -> void:
+func _on_aquarium_shop_create_structure_from_shop(type: Structure) -> void:
 	close_shop()
-	create_tank.emit(type)
+	create_structure.emit(type)

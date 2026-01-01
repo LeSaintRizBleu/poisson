@@ -1,7 +1,7 @@
 class_name AquariumShopButton
 extends Button
 
-@export var type: AquariumType
+@export var type: Structure
 
 signal shop_button_pressed
 

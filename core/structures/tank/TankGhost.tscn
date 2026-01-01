@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cv1q3iqukxnq8"]
 
-[ext_resource type="Script" uid="uid://ls8vdfvk1b6s" path="res://core/tank/TankGhost.gd" id="1_4f233"]
+[ext_resource type="Script" uid="uid://ls8vdfvk1b6s" path="res://core/structures/tank/TankGhost.gd" id="1_4f233"]
 [ext_resource type="Shader" uid="uid://cg8nkue06p537" path="res://shader/TankGhost.gdshader" id="2_dc5c8"]
 [ext_resource type="Texture2D" uid="uid://c7bv4eutgqekf" path="res://icon.svg" id="2_lr3l1"]
 

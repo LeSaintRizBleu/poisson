@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cobv8ufbqehcx"]
+[gd_scene load_steps=7 format=3 uid="uid://cobv8ufbqehcx"]
 
 [ext_resource type="Script" uid="uid://dk0g0embymee0" path="res://core/ui/aquariumShop/AquariumShop.gd" id="1_sxa4d"]
 [ext_resource type="PackedScene" uid="uid://b8alhie5cr31h" path="res://core/ui/aquariumShop/AquariumShopButton.tscn" id="2_oittu"]
 [ext_resource type="Resource" uid="uid://f4j0gg3hdbmk" path="res://resources/aquariumTypes/small.tres" id="3_kboxf"]
 [ext_resource type="Resource" uid="uid://dc5vrluvnx13o" path="res://resources/aquariumTypes/medium.tres" id="4_1a85c"]
 [ext_resource type="Resource" uid="uid://d0mgtfyv55m3g" path="res://resources/aquariumTypes/big.tres" id="5_h342i"]
+[ext_resource type="Resource" uid="uid://budujmiedigua" path="res://resources/structures/wall.tres" id="7_1a85c"]
 
 [node name="AquariumShop" type="Control"]
 visible = false
@@ -55,6 +56,11 @@ type = ExtResource("4_1a85c")
 layout_mode = 2
 type = ExtResource("5_h342i")
 
+[node name="AquariumShopButton4" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("2_oittu")]
+layout_mode = 2
+type = ExtResource("7_1a85c")
+
 [connection signal="shop_button_pressed" from="MarginContainer/ScrollContainer/HBoxContainer/AquariumShopButton" to="." method="_on_aquarium_shop_button_shop_button_pressed"]
 [connection signal="shop_button_pressed" from="MarginContainer/ScrollContainer/HBoxContainer/AquariumShopButton2" to="." method="_on_aquarium_shop_button_shop_button_pressed"]
 [connection signal="shop_button_pressed" from="MarginContainer/ScrollContainer/HBoxContainer/AquariumShopButton3" to="." method="_on_aquarium_shop_button_shop_button_pressed"]
+[connection signal="shop_button_pressed" from="MarginContainer/ScrollContainer/HBoxContainer/AquariumShopButton4" to="." method="_on_aquarium_shop_button_shop_button_pressed"]
