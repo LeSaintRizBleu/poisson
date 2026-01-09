@@ -2,6 +2,7 @@ extends Node2D
 class_name Aquarium
 
 var tank_ghost: PackedScene = preload("res://core/structures/tank/TankGhost.tscn")
+var wall_ghost: PackedScene = preload("res://core/structures/wall/MainWallGhost.tscn")
 var tank: PackedScene = preload("res://core/structures/tank/Tank.tscn")
 var visitor: PackedScene = preload("res://core/visitor/Visitor.tscn")
 
@@ -22,7 +23,8 @@ func _process(_delta: float) -> void:
 	var shader_material: ShaderMaterial = grid.material as ShaderMaterial
 	shader_material.set_shader_parameter("show_sprite", show_grid)
 	if show_grid:
-		shader_material.set_shader_parameter("mouse_position", get_global_mouse_position())
+		var ghost: Node2D = ghosts.get_child(0)
+		shader_material.set_shader_parameter("mouse_position", ghost.global_position)
 
 func init() -> void:
 	var data: Dictionary = Save.get_aquariums()
@@ -72,11 +74,18 @@ func create_tank(pos: Vector2, type: AquariumType) -> void:
 func add_error_popup(content: String) -> void:
 	hud.add_error_popup(content)
 
+func create_wall_ghost(type: Structure) -> void:
+	if Save.get_money() < type.get_price():
+		add_error_popup("Vous n'avez pas assez d'argent, l'aquarium coute %s " + str(type.get_price()) + " $")
+	elif ghosts.get_child_count() == 0:
+		var instance: MainWallGhost = wall_ghost.instantiate()
+		instance.type = type
+		ghosts.add_child(instance)
+		instance.create_tank.connect(create_tank)
+		instance.error.connect(add_error_popup)
 
 func _on_aquarium_hud_create_structure(type: Structure) -> void:
 	if type.is_tank():
 		create_tank_ghost(type)
 	else:
-		print("======")
-		print(" TODO ")
-		print("======")
+		create_wall_ghost(type)

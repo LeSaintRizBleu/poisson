@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://yombfg8ey7rg" path="res://core/aquarium/Aquarium.gd" id="1_a84l0"]
 [ext_resource type="PackedScene" uid="uid://emlhy8hilx00" path="res://core/ui/aquariumHUD/AquariumHUD.tscn" id="2_p073m"]
-[ext_resource type="Texture2D" uid="uid://cdspt4sa4s1i6" path="res://assets/backgrounds/grid.png" id="3_0bkc1"]
+[ext_resource type="Texture2D" uid="uid://bvdn3c25dlye5" path="res://assets/backgrounds/grid.png" id="3_0bkc1"]
 [ext_resource type="Shader" uid="uid://dr7rnfrgfglfs" path="res://shader/Grid.gdshader" id="3_elt1y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_esu7a"]

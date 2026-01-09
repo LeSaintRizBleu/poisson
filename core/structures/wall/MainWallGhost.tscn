@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cu8ki013hlmp"]
+
+[ext_resource type="Script" uid="uid://bxd3epe8nfjqs" path="res://core/structures/wall/MainWallGhost.gd" id="1_e1upr"]
+[ext_resource type="Shader" uid="uid://cg8nkue06p537" path="res://shader/TankGhost.gdshader" id="2_l57qi"]
+[ext_resource type="Texture2D" uid="uid://c7bv4eutgqekf" path="res://icon.svg" id="3_gbrkm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdiji"]
+shader = ExtResource("2_l57qi")
+shader_parameter/outline_width = 3.0
+shader_parameter/outline_color = Vector4(1, 1, 1, 1)
+shader_parameter/target_color = Vector4(0, 1, 0, 0.5)
+shader_parameter/darken_factor = 0.5
+shader_parameter/hatch_density = 10.0
+shader_parameter/hatch_speed = 1.0
+shader_parameter/hatch_width = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1upr"]
+size = Vector2(30, 30)
+
+[node name="MainWallGhost" type="Node2D"]
+script = ExtResource("1_e1upr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wdiji")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_gbrkm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_e1upr")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
