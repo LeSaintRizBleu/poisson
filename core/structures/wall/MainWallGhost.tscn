@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c7bv4eutgqekf" path="res://icon.svg" id="3_gbrkm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wdiji"]
+
 shader = ExtResource("2_l57qi")
 shader_parameter/outline_width = 3.0
 shader_parameter/outline_color = Vector4(1, 1, 1, 1)
