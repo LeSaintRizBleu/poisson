@@ -80,14 +80,11 @@ func _update_line_preview() -> void:
 
 func _set_direction(new_dir: Direction) -> void:
 	if dir != new_dir:
-		print("oui")
 		clear_walls()
 		dir = new_dir
 
 func _update_wall_preview(steps: int) -> void:
-	print(walls.get_child_count())
-	print("       ")
-	if sign(steps) != sign:
+	if sign(steps) != sig:
 		clear_walls()
 		sig = sign(steps)
 	var target_count: int = abs(steps)
@@ -95,8 +92,8 @@ func _update_wall_preview(steps: int) -> void:
 	while walls.get_child_count() > target_count:
 		walls.remove_child(walls.get_children()[-1])
 
-	while walls.get_child_count() < target_count:
-		var index: int = walls.get_child_count()
+	while walls.get_child_count() + 1 < target_count:
+		var index: int = walls.get_child_count() + 1
 		var offset: Vector2
 		if dir == Direction.HORIZONTAL:
 			offset = Vector2(sig * index * grid_size.x, 0)
