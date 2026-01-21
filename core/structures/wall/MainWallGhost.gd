@@ -67,11 +67,11 @@ func _update_line_preview() -> void:
 	var delta: Vector2 = mouse_pos - origin
 	var steps: int
 	
-	if abs(delta.x) >= abs(delta.y) +1:
+	if abs(delta.x) > abs(delta.y):
 		_set_direction(Direction.HORIZONTAL)
 		delta.y = 0
 		steps = int(delta.x / grid_size.x)
-	else:
+	elif abs(delta.x) < abs(delta.y):
 		_set_direction(Direction.VERTICAL)
 		delta.x = 0
 		steps = int(delta.y / grid_size.y)
@@ -85,14 +85,14 @@ func _set_direction(new_dir: Direction) -> void:
 
 func _update_wall_preview(steps: int) -> void:
 	if sign(steps) != sig:
-		clear_walls()
 		sig = sign(steps)
+		clear_walls()
 	var target_count: int = abs(steps)
 
 	while walls.get_child_count() > target_count:
 		walls.remove_child(walls.get_children()[-1])
 
-	while walls.get_child_count() + 1 < target_count:
+	while walls.get_child_count() < target_count:
 		var index: int = walls.get_child_count() + 1
 		var offset: Vector2
 		if dir == Direction.HORIZONTAL:
