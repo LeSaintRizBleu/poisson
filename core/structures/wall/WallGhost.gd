@@ -14,12 +14,13 @@ signal create_tank
 signal error
 
 func _ready() -> void:
+	var shader_material: ShaderMaterial = sprite.material as ShaderMaterial
+	shader_material.resource_local_to_scene = true
 	Context.ghost_on = true
 
 func _process(_delta: float) -> void:
 	var shader_material: ShaderMaterial = sprite.material as ShaderMaterial
 
-	shader_material.resource_local_to_scene = true
 	if can_be_placed == 0:
 		shader_material.set_shader_parameter("target_color", Vector4(0.0, 1.0, 0.0, 0.5))
 	else:

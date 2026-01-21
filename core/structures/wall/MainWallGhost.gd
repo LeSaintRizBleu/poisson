@@ -1,6 +1,15 @@
 extends Node2D
 class_name MainWallGhost
 
+enum Direction {
+  HORIZONTAL,
+  VERTICAL,
+  NEUTRAL,
+}
+
+var dir: Direction = Direction.NEUTRAL
+var sig: int = 0
+
 var can_be_placed: int = 0
 var type: Structure
 
@@ -23,8 +32,13 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	global_position = handle_position()
-	if is_drawing_line && last_mouse_pos != _get_pos_in_grid():
-		_update_line_preview()
+	if is_drawing_line:
+		if dir == Direction.HORIZONTAL && last_mouse_pos.x != _get_pos_in_grid().x:
+			_update_line_preview()
+		elif dir == Direction.VERTICAL && last_mouse_pos.y != _get_pos_in_grid().y:
+			_update_line_preview()
+		elif dir == Direction.NEUTRAL:
+			_update_line_preview()
 	var shader_material: ShaderMaterial = sprite.material as ShaderMaterial
 	if can_be_placed == 0:
 		shader_material.set_shader_parameter("target_color", Vector4(0.0, 1.0, 0.0, 0.5))
@@ -49,23 +63,50 @@ func _unhandled_input(event: InputEvent) -> void:
 			destroy()
 
 func _update_line_preview() -> void:
-	for child in walls.get_children():
-		child.queue_free()
-
 	var mouse_pos: Vector2 = _get_pos_in_grid()
-	if abs(mouse_pos.x - origin.x) > abs(mouse_pos.y - origin.y):
-		mouse_pos.y = origin.y
-		var steps: int = int((mouse_pos.x - origin.x) / 32)
-		var s: int = signi(steps)
-		for i in range (1, abs(steps)+1):
-			add_wall(Vector2(i*32*s, 0))
-
+	var delta: Vector2 = mouse_pos - origin
+	var steps: int
+	
+	if abs(delta.x) >= abs(delta.y) +1:
+		_set_direction(Direction.HORIZONTAL)
+		delta.y = 0
+		steps = int(delta.x / grid_size.x)
 	else:
-		mouse_pos.x = origin.x
-		var steps: int = int((mouse_pos.y - origin.y) / 32)
-		var s: int = signi(steps)
-		for i in range (1, abs(steps)+1):
-			add_wall(Vector2(0, i*32*s))
+		_set_direction(Direction.VERTICAL)
+		delta.x = 0
+		steps = int(delta.y / grid_size.y)
+
+	_update_wall_preview(steps)
+
+func _set_direction(new_dir: Direction) -> void:
+	if dir != new_dir:
+		print("oui")
+		clear_walls()
+		dir = new_dir
+
+func _update_wall_preview(steps: int) -> void:
+	print(walls.get_child_count())
+	print("       ")
+	if sign(steps) != sign:
+		clear_walls()
+		sig = sign(steps)
+	var target_count: int = abs(steps)
+
+	while walls.get_child_count() > target_count:
+		walls.remove_child(walls.get_children()[-1])
+
+	while walls.get_child_count() < target_count:
+		var index: int = walls.get_child_count()
+		var offset: Vector2
+		if dir == Direction.HORIZONTAL:
+			offset = Vector2(sig * index * grid_size.x, 0)
+		else:
+			offset = Vector2(0, sig * index * grid_size.y)
+		add_wall(offset)
+
+func clear_walls() -> void:
+	for child in walls.get_children():
+		child.free()
 
 func add_wall(pos: Vector2) -> void:
 	var instance: WallGhost = wall_ghost.instantiate()
