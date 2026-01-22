@@ -57,8 +57,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				origin = _get_pos_in_grid()
 				is_drawing_line = true
 			else:
-				#TODO
-				pass
+				_place_wall()
 		if mouse_event.button_index == MOUSE_BUTTON_RIGHT && mouse_event.pressed:
 			destroy()
 
@@ -124,6 +123,10 @@ func create_struct() -> void:
 		destroy()
 	else:
 		error.emit("L'objet ne peut pas être placé ici, l'espace n'est pas libre.")
+
+func _place_wall() -> void:
+	for wall in walls.get_children():
+		pass
 
 func destroy() -> void:
 	Context.ghost_on = false

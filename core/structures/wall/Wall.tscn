@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8eqyjcx0ats3"]
+
+[ext_resource type="Texture2D" uid="uid://c7bv4eutgqekf" path="res://icon.svg" id="2_74c8e"]
+
+[node name="Wall" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.57218724, 0.30874634, 1.92523e-07, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_74c8e")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
