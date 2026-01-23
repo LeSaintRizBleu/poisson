@@ -4,6 +4,7 @@ class_name Aquarium
 var tank_ghost: PackedScene = preload("res://core/structures/tank/TankGhost.tscn")
 var wall_ghost: PackedScene = preload("res://core/structures/wall/MainWallGhost.tscn")
 var tank: PackedScene = preload("res://core/structures/tank/Tank.tscn")
+var wall: PackedScene = preload("res://core/structures/wall/Wall.tscn")
 var visitor: PackedScene = preload("res://core/visitor/Visitor.tscn")
 
 @onready var ghosts: Node2D = $Ghosts
@@ -81,7 +82,7 @@ func create_wall_ghost(type: Structure) -> void:
 		var instance: MainWallGhost = wall_ghost.instantiate()
 		instance.type = type
 		ghosts.add_child(instance)
-		instance.create_tank.connect(create_tank)
+		instance.create_wall.connect(create_wall)
 		instance.error.connect(add_error_popup)
 
 func _on_aquarium_hud_create_structure(type: Structure) -> void:
@@ -89,3 +90,15 @@ func _on_aquarium_hud_create_structure(type: Structure) -> void:
 		create_tank_ghost(type)
 	else:
 		create_wall_ghost(type)
+
+func create_wall(pos: Array[Vector2]) -> void:
+	for p in pos:
+		var id: String = ""
+		#TODO ajouter a la save
+		#var id: String = Save.add_aquirium(pos, type.get_id())
+		#Save.save_data()
+		var instance: Wall = wall.instantiate()
+		instance.id = id
+		instance.global_position = p
+		aquariums.add_child(instance)
+	rebake()

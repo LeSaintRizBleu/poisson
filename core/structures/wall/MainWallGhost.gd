@@ -24,7 +24,7 @@ var is_drawing_line: bool = false
 var wall_ghost: PackedScene = preload("res://core/structures/wall/WallGhost.tscn")
 var last_mouse_pos: Vector2 = Vector2.ZERO
 
-signal create_tank
+signal create_wall
 signal error
 
 func _ready() -> void:
@@ -57,7 +57,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				origin = _get_pos_in_grid()
 				is_drawing_line = true
 			else:
-				_place_wall()
+				_place_walls()
 		if mouse_event.button_index == MOUSE_BUTTON_RIGHT && mouse_event.pressed:
 			destroy()
 
@@ -106,7 +106,6 @@ func clear_walls() -> void:
 
 func add_wall(pos: Vector2) -> void:
 	var instance: WallGhost = wall_ghost.instantiate()
-	instance.type = type
 	instance.position = pos
 	walls.add_child(instance)
 
@@ -116,17 +115,31 @@ func handle_position() -> Vector2:
 	else:
 		return _get_pos_in_grid()
 
-func create_struct() -> void:
-	if can_be_placed == 0:
-		Save.sub_money(type.get_price())
-		create_tank.emit(_get_pos_in_grid(), type)
+func _place_walls() -> void:
+	if (_check_walls() && _check_money()):
+		var pos: Array[Vector2] = [] 
+		for wall: WallGhost in walls.get_children():
+			pos.append(wall.global_position)
+		pos.append(origin)
+		create_wall.emit(pos)
 		destroy()
+
 	else:
 		error.emit("L'objet ne peut pas être placé ici, l'espace n'est pas libre.")
 
-func _place_wall() -> void:
-	for wall in walls.get_children():
-		pass
+func _check_money() -> bool:
+	var n: int = walls.get_child_count() + 1
+	var total: int = n * type.get_price()
+	if Save.get_money() >= total:
+		Save.sub_money(total)
+		return true
+	return false
+
+func _check_walls() -> bool:
+	for wall: WallGhost in walls.get_children():
+		if wall.can_be_placed != 0:
+			return false
+	return can_be_placed == 0
 
 func destroy() -> void:
 	Context.ghost_on = false
