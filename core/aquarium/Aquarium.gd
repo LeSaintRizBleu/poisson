@@ -9,6 +9,7 @@ var visitor: PackedScene = preload("res://core/visitor/Visitor.tscn")
 
 @onready var ghosts: Node2D = $Ghosts
 @onready var aquariums: Node2D = $NavigationRegion2D/Aquariums
+@onready var structures: Node2D = $NavigationRegion2D/Structures
 @onready var visitors: Node2D = $NavigationRegion2D/Visitors
 @onready var hud: AquariumHUD = $AquariumHud
 @onready var grid: Sprite2D = $Grid
@@ -28,6 +29,11 @@ func _process(_delta: float) -> void:
 		shader_material.set_shader_parameter("mouse_position", ghost.global_position)
 
 func init() -> void:
+	place_aquariums()
+	place_structures()
+	rebake()
+
+func place_aquariums() -> void:
 	var data: Dictionary = Save.get_aquariums()
 	for id: String in data.keys():
 		var aquarium: Dictionary = data[id]
@@ -41,7 +47,19 @@ func init() -> void:
 			instance.global_position = pos
 			instance.id = id
 			aquariums.add_child(instance)
-	rebake()
+
+func place_structures() -> void:
+	var data: Dictionary = Save.get_structures()
+	for id: String in data.keys():
+		var structure: Dictionary = data[id]
+		if !structure.is_empty():
+			var instance: Wall = wall.instantiate()
+			var x: float = structure["x"]
+			var y: float = structure["y"]
+			var pos: Vector2 = Vector2(x, y)
+			instance.global_position = pos
+			instance.id = id
+			structures.add_child(instance)
 
 func create_tank_ghost(type: Structure) -> void:
 	if Save.get_money() < type.get_price():
@@ -92,13 +110,12 @@ func _on_aquarium_hud_create_structure(type: Structure) -> void:
 		create_wall_ghost(type)
 
 func create_wall(pos: Array[Vector2]) -> void:
+	var type: Structure = load("res://resources/structures/wall.tres")
 	for p in pos:
-		var id: String = ""
-		#TODO ajouter a la save
-		#var id: String = Save.add_aquirium(pos, type.get_id())
-		#Save.save_data()
+		var id: String = Save.add_structure(p, type.get_id())
 		var instance: Wall = wall.instantiate()
 		instance.id = id
 		instance.global_position = p
-		aquariums.add_child(instance)
+		structures.add_child(instance)
+	Save.save_data()
 	rebake()

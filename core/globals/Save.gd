@@ -4,6 +4,7 @@ const SAVE_FILE_PATH: String = "user://saveFile.save"
 var data: Dictionary = {
 	"inventory": {},
 	"aquariums": {},
+	"structures": {},
 	"money": 0
 }
 
@@ -34,6 +35,28 @@ func remove_aquirium(id: String) -> void:
 		print("Aquarium ID not found: " + id)
 		return
 	data["aquariums"][id] = {}
+
+
+func get_structures() -> Dictionary:
+	var structures: Dictionary = data["structures"]
+	return structures.duplicate(true)
+
+func add_structure(pos: Vector2, type: String) -> String:
+	var structures: Dictionary = data["structures"]
+	var structure_id: String = "structure_%s" % structures.size()
+	structures[structure_id] = {
+		"x": pos.x,
+		"y": pos.y,
+		"type": type
+	}
+	return structure_id
+
+func remove_structure(id: String) -> void:
+	var structures: Dictionary = data["structures"]
+	if not structures.has(id):
+		print("Structure ID not found: " + id)
+		return
+	data["structures"][id] = {}
 
 
 
@@ -109,15 +132,30 @@ func save_data() -> void:
 		print("Error saving data")
 
 func clear() -> void:
+	clear_aquarium()
+	clear_structure()
+	
+func clear_aquarium() -> void:
 	var current_id: int = 0
-	var new_aquarium: Dictionary
+	var new_aquariums: Dictionary
 	var aquariums: Dictionary = data["aquariums"]
 	for aquarium: Dictionary in aquariums.values():
 		if aquarium != {}:
 			var aquarium_id: String = "aquarium_%s" % current_id
-			new_aquarium[aquarium_id] = aquarium 
+			new_aquariums[aquarium_id] = aquarium 
 			current_id += 1
-	data["aquariums"] = new_aquarium
+	data["aquariums"] = new_aquariums
+	
+func clear_structure() -> void:
+	var current_id: int = 0
+	var new_structures: Dictionary
+	var structures: Dictionary = data["structures"]
+	for structure: Dictionary in structures.values():
+		if structure != {}:
+			var structure_id: String = "structure_%s" % current_id
+			new_structures[structure_id] = structure 
+			current_id += 1
+	data["structures"] = new_structures
 
 
 func get_money() -> int:

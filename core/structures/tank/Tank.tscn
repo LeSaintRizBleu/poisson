@@ -10,6 +10,7 @@ size = Vector2(128, 128)
 script = ExtResource("1_guxb4")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 64.0
 vertices = PackedVector2Array(64, 65, 64, -64, -64, -64, -64, 64)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
