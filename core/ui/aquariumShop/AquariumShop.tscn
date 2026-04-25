@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cobv8ufbqehcx"]
+[gd_scene format=3 uid="uid://cobv8ufbqehcx"]
 
 [ext_resource type="Script" uid="uid://dk0g0embymee0" path="res://core/ui/aquariumShop/AquariumShop.gd" id="1_sxa4d"]
 [ext_resource type="PackedScene" uid="uid://b8alhie5cr31h" path="res://core/ui/aquariumShop/AquariumShopButton.tscn" id="2_oittu"]
@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://d0mgtfyv55m3g" path="res://resources/aquariumTypes/big.tres" id="5_h342i"]
 [ext_resource type="Resource" uid="uid://budujmiedigua" path="res://resources/structures/wall.tres" id="7_1a85c"]
 
-[node name="AquariumShop" type="Control"]
+[node name="AquariumShop" type="Control" unique_id=1904309624]
 visible = false
 custom_minimum_size = Vector2(1152, 200)
 layout_mode = 3
@@ -15,52 +15,71 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -200.0
+offset_top = -231.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_sxa4d")
 
-[node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(1152, 200)
+[node name="TabContainer" type="TabContainer" parent="." unique_id=1869981143]
 layout_mode = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+offset_right = 1152.0
+offset_bottom = 231.0
+current_tab = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Aquariums" type="MarginContainer" parent="TabContainer" unique_id=141467505]
 custom_minimum_size = Vector2(1152, 200)
-layout_mode = 0
+layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Aquariums" unique_id=2125763944]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Aquariums/ScrollContainer" unique_id=2123396377]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="AquariumShopButton" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("2_oittu")]
+[node name="AquariumShopButton" parent="TabContainer/Aquariums/ScrollContainer/HBoxContainer" unique_id=109088582 instance=ExtResource("2_oittu")]
 layout_mode = 2
 type = ExtResource("3_kboxf")
 
-[node name="AquariumShopButton2" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("2_oittu")]
+[node name="AquariumShopButton2" parent="TabContainer/Aquariums/ScrollContainer/HBoxContainer" unique_id=1107700172 instance=ExtResource("2_oittu")]
 layout_mode = 2
 type = ExtResource("4_1a85c")
 
-[node name="AquariumShopButton3" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("2_oittu")]
+[node name="AquariumShopButton3" parent="TabContainer/Aquariums/ScrollContainer/HBoxContainer" unique_id=113136378 instance=ExtResource("2_oittu")]
 layout_mode = 2
 type = ExtResource("5_h342i")
 
-[node name="AquariumShopButton4" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("2_oittu")]
+[node name="Walls" type="MarginContainer" parent="TabContainer" unique_id=1347628176]
+visible = false
+custom_minimum_size = Vector2(1152, 200)
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Walls" unique_id=1928505275]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Walls/ScrollContainer" unique_id=974525643]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="AquariumShopButton4" parent="TabContainer/Walls/ScrollContainer/HBoxContainer" unique_id=803517422 instance=ExtResource("2_oittu")]
 layout_mode = 2
 type = ExtResource("7_1a85c")
 
-[connection signal="shop_button_pressed" from="MarginContainer/ScrollContainer/HBoxContainer/AquariumShopButton" to="." method="_on_aquarium_shop_button_shop_button_pressed"]
-[connection signal="shop_button_pressed" from="MarginContainer/ScrollContainer/HBoxContainer/AquariumShopButton2" to="." method="_on_aquarium_shop_button_shop_button_pressed"]
-[connection signal="shop_button_pressed" from="MarginContainer/ScrollContainer/HBoxContainer/AquariumShopButton3" to="." method="_on_aquarium_shop_button_shop_button_pressed"]
-[connection signal="shop_button_pressed" from="MarginContainer/ScrollContainer/HBoxContainer/AquariumShopButton4" to="." method="_on_aquarium_shop_button_shop_button_pressed"]
+[connection signal="shop_button_pressed" from="TabContainer/Aquariums/ScrollContainer/HBoxContainer/AquariumShopButton" to="." method="_on_aquarium_shop_button_shop_button_pressed"]
+[connection signal="shop_button_pressed" from="TabContainer/Aquariums/ScrollContainer/HBoxContainer/AquariumShopButton2" to="." method="_on_aquarium_shop_button_shop_button_pressed"]
+[connection signal="shop_button_pressed" from="TabContainer/Aquariums/ScrollContainer/HBoxContainer/AquariumShopButton3" to="." method="_on_aquarium_shop_button_shop_button_pressed"]
+[connection signal="shop_button_pressed" from="TabContainer/Walls/ScrollContainer/HBoxContainer/AquariumShopButton4" to="." method="_on_aquarium_shop_button_shop_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqx33048x87lx"]
+[gd_scene format=3 uid="uid://dqx33048x87lx"]
 
 [ext_resource type="Script" uid="uid://ltbon0l36c0b" path="res://core/visualisation/Visualisation.gd" id="1_br2wl"]
 [ext_resource type="Texture2D" uid="uid://bgqgem08ycns" path="res://assets/backgrounds/underwater-fantasy-preview.png" id="2_kmy5b"]
@@ -33,30 +33,32 @@ shader_parameter/surf_magnitude = 0.0
 shader_parameter/s11 = 2.221
 shader_parameter/sinpowder = 8.0
 
-[node name="Visualisation" type="Node2D"]
+[node name="Visualisation" type="Node2D" unique_id=2075464384]
 script = ExtResource("1_br2wl")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="." unique_id=341030082]
 position = Vector2(432, 284)
 scale = Vector2(3.95833, 3.95833)
 texture = ExtResource("2_kmy5b")
 
-[node name="Shoals" type="Node2D" parent="."]
+[node name="Shoals" type="Node2D" parent="." unique_id=579721704]
 
-[node name="WaterWave" type="ColorRect" parent="."]
+[node name="WaterWave" type="ColorRect" parent="." unique_id=1784236847]
 material = SubResource("ShaderMaterial_elt1y")
 offset_left = -42.0
 offset_top = -33.0
 offset_right = 1197.0
 offset_bottom = 687.0
+metadata/_edit_use_anchors_ = true
 
-[node name="WaterReflection" type="ColorRect" parent="."]
+[node name="WaterReflection" type="ColorRect" parent="." unique_id=278659064]
 material = SubResource("ShaderMaterial_esu7a")
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 1, 1, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="TankHud" parent="." instance=ExtResource("5_fcrf0")]
+[node name="TankHud" parent="." unique_id=1857787545 instance=ExtResource("5_fcrf0")]
 
 [connection signal="add_fish" from="TankHud" to="." method="_on_tank_hud_add_fish"]
 [connection signal="delete_tank" from="TankHud" to="." method="_on_tank_hud_delete_tank"]
