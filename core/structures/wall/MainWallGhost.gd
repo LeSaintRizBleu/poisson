@@ -15,7 +15,6 @@ signal create_wall
 var origin: Vector2
 var is_drawing_line: bool = false
 
-@onready var sprite: Sprite2D = $Sprite2D
 @onready var walls: Node2D = $Walls
 
 var wall_ghost: PackedScene = preload("res://core/structures/wall/WallGhost.tscn")
@@ -23,10 +22,7 @@ var last_mouse_pos: Vector2 = Vector2.ZERO
 
 var last_wall: WallGhost
 
-func _ready() -> void:
-	Context.ghost_on = true
-
-func _process(_delta: float) -> void:
+func effect(_delta: float) -> void:
 	global_position = handle_position()
 	if is_drawing_line:
 		if dir == Direction.HORIZONTAL && last_mouse_pos.x != get_pos_in_grid().x:
@@ -35,11 +31,6 @@ func _process(_delta: float) -> void:
 			_update_line_preview()
 		elif dir == Direction.NEUTRAL:
 			_update_line_preview()
-	var shader_material: ShaderMaterial = sprite.material as ShaderMaterial
-	if can_be_placed == 0:
-		shader_material.set_shader_parameter("target_color", Vector4(0.0, 1.0, 0.0, 0.5))
-	else:
-		shader_material.set_shader_parameter("target_color", Vector4(1.0, 0.0, 0.0, 0.5))
 	last_mouse_pos = get_pos_in_grid()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -138,17 +129,8 @@ func _check_walls() -> bool:
 			return false
 	return can_be_placed == 0
 
-func _on_area_2d_area_entered(_area: Area2D) -> void:
-	can_be_placed += 1
-
-func _on_area_2d_area_exited(_area: Area2D) -> void:
-	can_be_placed -= 1
-
 func get_first_pos() -> Vector2:
 	return global_position
 
 func get_last_pos() -> Vector2:
 	return last_wall.global_position if last_wall else global_position
-
-func get_size() -> Vector2:
-	return sprite.texture.get_size() * sprite.scale

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv1q3iqukxnq8"]
+[gd_scene format=3 uid="uid://cv1q3iqukxnq8"]
 
 [ext_resource type="Script" uid="uid://ls8vdfvk1b6s" path="res://core/structures/tank/TankGhost.gd" id="1_4f233"]
 [ext_resource type="Shader" uid="uid://cg8nkue06p537" path="res://shader/TankGhost.gdshader" id="2_dc5c8"]
@@ -17,18 +17,15 @@ shader_parameter/hatch_width = 0.5
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dc5c8"]
 size = Vector2(120, 120)
 
-[node name="TankGhost" type="Node2D"]
+[node name="TankGhost" type="Node2D" unique_id=522620412]
 script = ExtResource("1_4f233")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=838732996]
 material = SubResource("ShaderMaterial_wdiji")
 texture = ExtResource("2_lr3l1")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1019373755]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=374760122]
 shape = SubResource("RectangleShape2D_dc5c8")
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
