@@ -25,8 +25,9 @@ func _process(_delta: float) -> void:
 	var shader_material: ShaderMaterial = grid.material as ShaderMaterial
 	shader_material.set_shader_parameter("show_sprite", show_grid)
 	if show_grid:
-		var ghost: Node2D = ghosts.get_child(0)
-		shader_material.set_shader_parameter("mouse_position", ghost.global_position)
+		var ghost: AbstractGhost = ghosts.get_child(0)
+		shader_material.set_shader_parameter("position_a", ghost.get_first_pos())
+		shader_material.set_shader_parameter("position_b", ghost.get_last_pos())
 
 func init() -> void:
 	place_aquariums()

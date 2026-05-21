@@ -1,9 +1,5 @@
-extends Node2D
+extends AbstractGhost
 class_name WallGhost
-
-var can_be_placed: int = 0
-
-var grid_size: Vector2 = Vector2(32, 32)
 
 var origin: Vector2
 
@@ -22,15 +18,14 @@ func _process(_delta: float) -> void:
 	else:
 		shader_material.set_shader_parameter("target_color", Vector4(1.0, 0.0, 0.0, 0.5))
 
-func get_pos_in_grid() -> Vector2:
-	return get_global_mouse_position().snapped(grid_size)
-
-func destroy() -> void:
-	Context.ghost_on = false
-	queue_free()
-
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	can_be_placed += 1
 
 func _on_area_2d_area_exited(_area: Area2D) -> void:
 	can_be_placed -= 1
+
+func get_first_pos() -> Vector2:
+	return global_position
+
+func get_last_pos() -> Vector2:
+	return global_position

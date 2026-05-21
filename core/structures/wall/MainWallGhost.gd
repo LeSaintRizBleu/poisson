@@ -1,4 +1,4 @@
-extends Node2D
+extends AbstractGhost
 class_name MainWallGhost
 
 enum Direction {
@@ -10,10 +10,7 @@ enum Direction {
 var dir: Direction = Direction.NEUTRAL
 var sig: int = 0
 
-var can_be_placed: int = 0
-var type: Structure
-
-var grid_size: Vector2 = Vector2(32, 32)
+signal create_wall
 
 var origin: Vector2
 var is_drawing_line: bool = false
@@ -24,8 +21,7 @@ var is_drawing_line: bool = false
 var wall_ghost: PackedScene = preload("res://core/structures/wall/WallGhost.tscn")
 var last_mouse_pos: Vector2 = Vector2.ZERO
 
-signal create_wall
-signal error
+var last_wall: WallGhost
 
 func _ready() -> void:
 	Context.ghost_on = true
@@ -33,9 +29,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	global_position = handle_position()
 	if is_drawing_line:
-		if dir == Direction.HORIZONTAL && last_mouse_pos.x != _get_pos_in_grid().x:
+		if dir == Direction.HORIZONTAL && last_mouse_pos.x != get_pos_in_grid().x:
 			_update_line_preview()
-		elif dir == Direction.VERTICAL && last_mouse_pos.y != _get_pos_in_grid().y:
+		elif dir == Direction.VERTICAL && last_mouse_pos.y != get_pos_in_grid().y:
 			_update_line_preview()
 		elif dir == Direction.NEUTRAL:
 			_update_line_preview()
@@ -44,17 +40,14 @@ func _process(_delta: float) -> void:
 		shader_material.set_shader_parameter("target_color", Vector4(0.0, 1.0, 0.0, 0.5))
 	else:
 		shader_material.set_shader_parameter("target_color", Vector4(1.0, 0.0, 0.0, 0.5))
-	last_mouse_pos = _get_pos_in_grid()
-
-func _get_pos_in_grid() -> Vector2:
-	return get_global_mouse_position().snapped(grid_size)
+	last_mouse_pos = get_pos_in_grid()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var mouse_event: InputEventMouseButton = event as InputEventMouseButton
 		if mouse_event.button_index == MOUSE_BUTTON_LEFT && mouse_event.pressed:
 			if !is_drawing_line:
-				origin = _get_pos_in_grid()
+				origin = get_pos_in_grid()
 				is_drawing_line = true
 			else:
 				_place_walls()
@@ -62,7 +55,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			destroy()
 
 func _update_line_preview() -> void:
-	var mouse_pos: Vector2 = _get_pos_in_grid()
+	var mouse_pos: Vector2 = get_pos_in_grid()
 	var delta: Vector2 = mouse_pos - origin
 	var steps: int
 	
@@ -76,6 +69,10 @@ func _update_line_preview() -> void:
 		steps = int(delta.y / grid_size.y)
 
 	_update_wall_preview(steps)
+	
+	last_wall = null
+	if walls.get_child_count() > 0:
+		last_wall = walls.get_children().back()
 
 func _set_direction(new_dir: Direction) -> void:
 	if dir != new_dir:
@@ -113,7 +110,7 @@ func handle_position() -> Vector2:
 	if origin:
 		return origin
 	else:
-		return _get_pos_in_grid()
+		return get_pos_in_grid()
 
 func _place_walls() -> void:
 	if (_check_walls() && _check_money()):
@@ -141,12 +138,14 @@ func _check_walls() -> bool:
 			return false
 	return can_be_placed == 0
 
-func destroy() -> void:
-	Context.ghost_on = false
-	queue_free()
-
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	can_be_placed += 1
 
 func _on_area_2d_area_exited(_area: Area2D) -> void:
 	can_be_placed -= 1
+
+func get_first_pos() -> Vector2:
+	return global_position
+
+func get_last_pos() -> Vector2:
+	return last_wall.global_position if last_wall else global_position
