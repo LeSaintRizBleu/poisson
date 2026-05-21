@@ -149,3 +149,6 @@ func get_first_pos() -> Vector2:
 
 func get_last_pos() -> Vector2:
 	return last_wall.global_position if last_wall else global_position
+
+func get_size() -> Vector2:
+	return sprite.texture.get_size() * sprite.scale
