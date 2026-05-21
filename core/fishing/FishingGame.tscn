@@ -34,7 +34,9 @@ text = "Capture"
 horizontal_alignment = 1
 
 [node name="CaptureBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=2135586464]
+custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="EnergyLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1132918126]
 layout_mode = 2

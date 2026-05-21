@@ -3,7 +3,7 @@ class_name Map
 
 var inventory_url: String = "res://core/ui/inventory/Inventory.tscn"
 var aquarium_url: String = "res://core/aquarium/Aquarium.tscn"
-var fishing_url: String = "res://core/fishing/Fishing.tscn"
+var fishing_url: String = "res://core/fishing/FishingGame.tscn"
 
 func _on_inventory_pressed() -> void:
 	get_tree().change_scene_to_file(inventory_url)

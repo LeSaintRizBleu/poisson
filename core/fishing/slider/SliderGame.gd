@@ -1,24 +1,19 @@
 class_name FishingBar
-extends MarginContainer
+extends FishingMinigame
 
 @onready var green_zones: Control = $GreenZones
 @onready var slider: FishingSlider = $Slider
 
 var green_zones_list: Array = []
 
-var fish_info: FishInfo
 var difficulty: int
-var bar_size: int
-var bar_speed: float
+var bar_size: int = 50
+var bar_speed: float = 1.0
 
-signal success
-signal fail
+var is_pause: bool = false
 
-func init(fish_info_init: FishInfo) -> void:
-	fish_info = fish_info_init
-	difficulty = fish_info.get_difficulty()
-	bar_size = fish_info.get_bar_size()
-	bar_speed = fish_info.get_bar_speed()
+func start() -> void:
+	difficulty = randi_range(1, 2)
 	add_green_zone()
 	slider.set_speed(bar_speed)
 	slider.start_movement()
@@ -30,14 +25,15 @@ func add_green_zone() -> void:
 		_add_random_green_zone()
 
 func _add_sym_green_zone() -> void:
-	var pos1: int = randi_range(0, 250 - bar_size)
-	var pos2: int = 500 - bar_size - pos1
+	var pos1: int = randi_range(0, 192 - bar_size)
+	var pos2: int = 384 - bar_size - pos1
 	_add_green_zone_to_slider(pos1)
 	_add_green_zone_to_slider(pos2)
 
 func _add_random_green_zone() -> void:
-	var pos: int = randi_range(0, 500 - bar_size)
+	var pos: int = randi_range(0, 384 - bar_size)
 	_add_green_zone_to_slider(pos)
+
 
 func _add_green_zone_to_slider(pos: int) -> void:
 	green_zones_list.append({"pos": pos, "size": bar_size})
@@ -52,7 +48,9 @@ func clear_green_zone() -> void:
 	for node in green_zones.get_children():
 		green_zones.remove_child(node)
 
+
 func reload() -> void:
+	if is_pause: return
 	clear_green_zone()
 	add_green_zone()
 
@@ -77,4 +75,5 @@ func fail_bar() -> void:
 	reload()
 
 func stop() -> void:
+	is_pause = true
 	slider.stop()
