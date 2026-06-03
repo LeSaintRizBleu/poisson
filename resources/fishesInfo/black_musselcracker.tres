@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FishInfo" format=3 uid="uid://0yh71kbq6gyy"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_1bxn4"]
+[ext_resource type="Texture2D" uid="uid://dx5q87c7dyhlt" path="res://assets/fishes/black_musselcracker.png" id="2_de48c"]
+
+[resource]
+script = ExtResource("1_1bxn4")
+name = "Black musselcracker"
+sprite = ExtResource("2_de48c")
+sell_value = 25
+metadata/_custom_type_script = "uid://c6xuvyeaaxd0g"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FishInfo" format=3 uid="uid://b6hh64gojwvbj"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_bnpmc"]
+[ext_resource type="Texture2D" uid="uid://be7xbom0wksrj" path="res://assets/fishes/red_porgy.png" id="2_ka1uc"]
+
+[resource]
+script = ExtResource("1_bnpmc")
+name = "Red Porgy"
+sprite = ExtResource("2_ka1uc")
+sell_value = 12
+max_in_shoal = 5
+metadata/_custom_type_script = "uid://c6xuvyeaaxd0g"

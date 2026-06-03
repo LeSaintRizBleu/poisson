@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FishInfo" format=3 uid="uid://cwf30wk4x8481"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_hbcfh"]
+[ext_resource type="Texture2D" uid="uid://cgupqjcy5a2hh" path="res://assets/fishes/yellowfin_bream.png" id="2_lr36o"]
+
+[resource]
+script = ExtResource("1_hbcfh")
+name = "Yellowfin Bream"
+sprite = ExtResource("2_lr36o")
+sell_value = 9
+max_in_shoal = 10
+metadata/_custom_type_script = "uid://c6xuvyeaaxd0g"

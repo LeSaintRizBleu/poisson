@@ -14,6 +14,11 @@ func _ready() -> void:
 	load_data()
 	clear()
 
+func str_to_id(string: String) -> String:
+	return string.to_snake_case()
+
+
+
 func get_aquariums() -> Dictionary:
 	var aquariums: Dictionary = data["aquariums"]
 	return aquariums.duplicate(true)
@@ -66,7 +71,7 @@ func add_fish_to_aquarium(id: String, fish: String) -> void:
 		print("Aquarium ID not found: " + id)
 		return
 	var fishes: Dictionary = data["aquariums"][id]["fishes"]
-	fishes[fish] = fishes.get(fish, 0) + 1
+	fishes[str_to_id(fish)] = fishes.get(str_to_id(fish), 0) + 1
 
 func remove_fish_from_aquarium(id: String, fish: String) -> void:
 	var aquariums: Dictionary = data["aquariums"]
@@ -74,12 +79,12 @@ func remove_fish_from_aquarium(id: String, fish: String) -> void:
 		print("Aquarium ID not found: " + id)
 		return
 	var fishes: Dictionary = data["aquariums"][id]["fishes"]
-	if not fishes.has(fish):
-		print("Fish not found: " + fish)
+	if not fishes.has(str_to_id(fish)):
+		print("Fish not found: " + str_to_id(fish))
 		return
-	fishes[fish] -= 1
-	if fishes[fish] <= 0:
-		fishes.erase(fish)
+	fishes[str_to_id(fish)] -= 1
+	if fishes[str_to_id(fish)] <= 0:
+		fishes.erase(str_to_id(fish))
 
 func get_fishes_in_aquarium(id: String) -> Dictionary:
 	var aquariums: Dictionary = data["aquariums"]
@@ -99,16 +104,16 @@ func get_inventory() -> Dictionary:
 
 func add_fish_to_inventory(fish: String) -> void:
 	var inventory: Dictionary = data["inventory"]
-	inventory[fish] = inventory.get(fish, 0) + 1
+	inventory[str_to_id(fish)] = inventory.get(str_to_id(fish), 0) + 1
 
 func remove_fish_from_inventory(fish: String) -> void:
 	var inventory: Dictionary = data["inventory"]
-	if not inventory.has(fish):
-		print("Fish not found: " + fish)
+	if not inventory.has(str_to_id(fish)):
+		print("Fish not found: " + str_to_id(fish))
 		return
-	inventory[fish] -= 1
-	if inventory[fish] <= 0:
-		inventory.erase(fish)
+	inventory[str_to_id(fish)] -= 1
+	if inventory[str_to_id(fish)] <= 0:
+		inventory.erase(str_to_id(fish))
 
 
 

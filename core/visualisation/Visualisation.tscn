@@ -8,7 +8,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_elt1y"]
 shader = ExtResource("3_vwdde")
-shader_parameter/color = Color(0, 0.490196, 1, 1)
+shader_parameter/color = Color(0.36581612, 0.6329384, 1, 1)
 shader_parameter/frequency = 3.0
 shader_parameter/speed = 0.2
 shader_parameter/amplitude = 0.01
@@ -55,7 +55,6 @@ metadata/_edit_use_anchors_ = true
 material = SubResource("ShaderMaterial_esu7a")
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0, 1, 1, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="TankHud" parent="." unique_id=1857787545 instance=ExtResource("5_fcrf0")]

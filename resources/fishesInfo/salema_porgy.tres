@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FishInfo" format=3 uid="uid://cu1l7oqx0th7k"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_oh2bh"]
+[ext_resource type="Texture2D" uid="uid://bq1r8ali3tn82" path="res://assets/fishes/salema_porgy.png" id="2_yrcc7"]
+
+[resource]
+script = ExtResource("1_oh2bh")
+name = "Salema Porgy"
+sprite = ExtResource("2_yrcc7")
+sell_value = 5
+max_in_shoal = 25
+metadata/_custom_type_script = "uid://c6xuvyeaaxd0g"

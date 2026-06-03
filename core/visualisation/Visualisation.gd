@@ -15,9 +15,6 @@ var tank_inventory: PackedScene = preload("res://core/ui/inventory/TankInventory
 
 var id: String
 var type: AquariumType
-
-var offset: float = 100.0
-
 var aquarium_url: String = "res://core/aquarium/Aquarium.tscn"
 
 func _ready() -> void:
@@ -46,8 +43,8 @@ func clear() -> void:
 
 func create_shoal(fish_info: FishInfo) -> Shoal:
 	var shoal_instance: Shoal = shoal.instantiate()
-	var x: float = randf_range(offset, width - offset)
-	var y: float = randf_range(offset, height - offset)
+	var x: float = randf_range(0, width)
+	var y: float = randf_range(0, height)
 	shoal_instance.global_position = Vector2(x, y)
 	shoals.add_child(shoal_instance)
 	shoal_instance.init(fish_info, width, height)

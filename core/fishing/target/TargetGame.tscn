@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://6eku8gtix1nx"]
+
+[ext_resource type="Script" uid="uid://q81g175tfq32" path="res://core/fishing/target/target_game.gd" id="1_s7e55"]
+
+[node name="TargetGame" type="Control" unique_id=1881634097]
+custom_minimum_size = Vector2(1112, 483)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1112.0
+offset_bottom = 483.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("1_s7e55")
+
+[node name="Targets" type="Control" parent="." unique_id=611162099]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2

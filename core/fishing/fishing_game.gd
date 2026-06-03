@@ -18,13 +18,12 @@ var is_pause: bool = false
 var catch_popup: PackedScene = preload("res://core/ui/popup/CatchPopUp.tscn")
 var escape_popup: PackedScene = preload("res://core/ui/popup/EscapePopUp.tscn")
 
-var minigames: Array = ["res://core/fishing/slider/SliderGame.tscn"]
+@export var minigames: Array[PackedScene]
 var minigame: FishingMinigame
 
 func _ready() -> void:
-	var game_url: String = minigames.pick_random()
-	var temp: PackedScene = load(game_url)
-	minigame = temp.instantiate()
+	var game: PackedScene =minigames.pick_random()
+	minigame = game.instantiate()
 	minigame.success.connect(_on_success)
 	minigame.fail.connect(_on_fail)
 	game_container.add_child(minigame)
@@ -53,10 +52,9 @@ func _process_energy(delta: float) -> void:
 
 
 func get_random_fish() -> String:
-	if randi() % 2 == 0:
-		return "test1"
-	else:
-		return "test2"
+	var fishes: Registry = load("res://resources/fishesInfo/fishes.tres")
+	print(fishes.get_all_string_ids())
+	return fishes.get_all_string_ids().pick_random()
 
 func catch() -> void:
 	minigame.stop()

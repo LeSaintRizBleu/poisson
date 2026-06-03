@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FishInfo" format=3 uid="uid://cldcpf5nbr07x"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_dn3gq"]
+[ext_resource type="Texture2D" uid="uid://t7p3giv2oglx" path="res://assets/fishes/pinfish.png" id="2_7gdjn"]
+
+[resource]
+script = ExtResource("1_dn3gq")
+name = "Pinfish"
+sprite = ExtResource("2_7gdjn")
+water_type = 1
+sell_value = 3
+max_in_shoal = 10
+metadata/_custom_type_script = "uid://c6xuvyeaaxd0g"

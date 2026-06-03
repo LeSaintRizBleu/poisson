@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FishInfo" format=3 uid="uid://cmmc420ckbd21"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_bpsw6"]
+[ext_resource type="Texture2D" uid="uid://oaxuvcq37bti" path="res://assets/fishes/blotched_picarel.png" id="2_n1wfx"]
+
+[resource]
+script = ExtResource("1_bpsw6")
+name = "Blotched picarel"
+sprite = ExtResource("2_n1wfx")
+sell_value = 4
+max_in_shoal = 25
+metadata/_custom_type_script = "uid://c6xuvyeaaxd0g"

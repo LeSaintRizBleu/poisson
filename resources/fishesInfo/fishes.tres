@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="Registry" format=3 uid="uid://de1lu7k6vdtjs"]
+
+[ext_resource type="Script" uid="uid://dqtv77mng5dyh" path="res://addons/yard/registry.gd" id="1_5p5pu"]
+
+[resource]
+script = ExtResource("1_5p5pu")
+_version = 2
+_scan_rulesets = Array[Dictionary]([{
+&"allowed_file_extensions": Array[String]([]),
+&"class_restrictions": Array[StringName]([&"\"res://core/resources/FishInfo.gd\""]),
+&"recursive_scan": false,
+&"scan_directories": Array[String](["res://resources/fishesInfo"]),
+&"scan_regex_exclude": "",
+&"scan_regex_include": ""
+}])
+_uids_to_string_ids = Dictionary[StringName, StringName]({
+&"uid://0yh71kbq6gyy": &"black_musselcracker",
+&"uid://b6hh64gojwvbj": &"red_porgy",
+&"uid://bc6vi4icqkiij": &"redbanded_seabream",
+&"uid://be6eow8c4600q": &"sheepshead",
+&"uid://bt4peh58esk24": &"scup",
+&"uid://ccx8r84dcyb23": &"sheepshead_porgy",
+&"uid://cfxpg4joua5": &"red_steenbras",
+&"uid://cgnh7f5gg5rax": &"bulldog_dentex",
+&"uid://cldcpf5nbr07x": &"pinfish",
+&"uid://cmmc420ckbd21": &"blotched_picarel",
+&"uid://cu1l7oqx0th7k": &"salema_porgy",
+&"uid://cwf30wk4x8481": &"yellowfin_bream",
+&"uid://dkfvnx568yb5n": &"boops_boops",
+&"uid://dvhqoywisrv6y": &"white_steenbras",
+&"uid://dyp4tcr7qmqsa": &"red_seabream",
+&"uid://jms8rpmrv2x": &"common_dentex",
+&"uid://skka7tryhstl": &"saucereye_porgy"
+})
+_string_ids_to_uids = Dictionary[StringName, StringName]({
+&"black_musselcracker": &"uid://0yh71kbq6gyy",
+&"blotched_picarel": &"uid://cmmc420ckbd21",
+&"boops_boops": &"uid://dkfvnx568yb5n",
+&"bulldog_dentex": &"uid://cgnh7f5gg5rax",
+&"common_dentex": &"uid://jms8rpmrv2x",
+&"pinfish": &"uid://cldcpf5nbr07x",
+&"red_porgy": &"uid://b6hh64gojwvbj",
+&"red_seabream": &"uid://dyp4tcr7qmqsa",
+&"red_steenbras": &"uid://cfxpg4joua5",
+&"redbanded_seabream": &"uid://bc6vi4icqkiij",
+&"salema_porgy": &"uid://cu1l7oqx0th7k",
+&"saucereye_porgy": &"uid://skka7tryhstl",
+&"scup": &"uid://bt4peh58esk24",
+&"sheepshead": &"uid://be6eow8c4600q",
+&"sheepshead_porgy": &"uid://ccx8r84dcyb23",
+&"white_steenbras": &"uid://dvhqoywisrv6y",
+&"yellowfin_bream": &"uid://cwf30wk4x8481"
+})

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FishInfo" format=3 uid="uid://bt4peh58esk24"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_haajd"]
+[ext_resource type="Texture2D" uid="uid://8e4ueix2huxs" path="res://assets/fishes/scup.png" id="2_8tg4o"]
+
+[resource]
+script = ExtResource("1_haajd")
+name = "Scup"
+sprite = ExtResource("2_8tg4o")
+sell_value = 6
+max_in_shoal = 20
+metadata/_custom_type_script = "uid://c6xuvyeaaxd0g"

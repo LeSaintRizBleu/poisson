@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FishInfo" format=3 uid="uid://ccx8r84dcyb23"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_44wh7"]
+[ext_resource type="Texture2D" uid="uid://b8g820iye138m" path="res://assets/fishes/sheepshead_porgy.png" id="2_0nhx7"]
+
+[resource]
+script = ExtResource("1_44wh7")
+name = "Sheepshead Porgy"
+sprite = ExtResource("2_0nhx7")
+sell_value = 7
+max_in_shoal = 5
+metadata/_custom_type_script = "uid://c6xuvyeaaxd0g"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FishInfo" format=3 uid="uid://jms8rpmrv2x"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_8555h"]
+[ext_resource type="Texture2D" uid="uid://jv0q8iyyhilt" path="res://assets/fishes/common_dentex.png" id="2_sg6l5"]
+
+[resource]
+script = ExtResource("1_8555h")
+name = "Common dentex"
+sprite = ExtResource("2_sg6l5")
+sell_value = 22
+metadata/_custom_type_script = "uid://c6xuvyeaaxd0g"

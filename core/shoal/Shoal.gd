@@ -4,7 +4,6 @@ class_name Shoal
 var speed: float
 var aquarium_width: float
 var aquarium_height: float
-var max_offset: float
 
 var direction: Vector2 = Vector2.RIGHT
 
@@ -27,24 +26,23 @@ func _physics_process(delta: float) -> void:
 func check_bound() -> void:
 	var new_direction: Vector2 = direction
 	
-	if global_position.x < 0 + max_offset:
+	if global_position.x < 0:
 		new_direction = new_direction.bounce(Vector2.RIGHT)
-		global_position.x = 0 + max_offset
-	elif global_position.x > aquarium_width - max_offset:
+		global_position.x = 0
+	elif global_position.x > aquarium_width:
 		new_direction = new_direction.bounce(Vector2.LEFT)
-		global_position.x = aquarium_width - max_offset
+		global_position.x = aquarium_width
 	
-	if global_position.y < 0 + max_offset:
+	if global_position.y < 0:
 		new_direction = new_direction.bounce(Vector2.DOWN)
-		global_position.y = 0 + max_offset
-	elif global_position.y > aquarium_height - max_offset:
+		global_position.y = 0
+	elif global_position.y > aquarium_height:
 		new_direction = new_direction.bounce(Vector2.UP)
-		global_position.y = aquarium_height - max_offset
+		global_position.y = aquarium_height
 
 	direction = new_direction.normalized()
 
 func init(fish_info: FishInfo, width: float, height: float) -> void:
 	aquarium_width = width
 	aquarium_height = height
-	max_offset = fish_info.get_max_offset()
 	speed = fish_info.get_speed()

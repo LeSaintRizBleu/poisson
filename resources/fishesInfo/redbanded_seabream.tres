@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FishInfo" format=3 uid="uid://bc6vi4icqkiij"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_715se"]
+[ext_resource type="Texture2D" uid="uid://0mhexsxnjivi" path="res://assets/fishes/redbanded_seabream.png" id="2_yudil"]
+
+[resource]
+script = ExtResource("1_715se")
+name = "Redbanded seabream"
+sprite = ExtResource("2_yudil")
+sell_value = 16
+max_in_shoal = 3
+metadata/_custom_type_script = "uid://c6xuvyeaaxd0g"

@@ -27,4 +27,5 @@ func apply_texture() -> void:
 
 func _on_button_pressed() -> void:
 	Save.add_fish_to_inventory(fish_info.get_fish_name())
+	Save.save_data()
 	get_tree().change_scene_to_file(map_url)

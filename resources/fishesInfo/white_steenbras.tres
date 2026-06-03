@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FishInfo" format=3 uid="uid://dvhqoywisrv6y"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_q456d"]
+[ext_resource type="Texture2D" uid="uid://nfgfgvetpj47" path="res://assets/fishes/white_steenbras.png" id="2_1p62j"]
+
+[resource]
+script = ExtResource("1_q456d")
+name = "White steenbras"
+sprite = ExtResource("2_1p62j")
+sell_value = 28
+max_in_shoal = 10
+metadata/_custom_type_script = "uid://c6xuvyeaaxd0g"
