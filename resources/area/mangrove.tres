@@ -12,5 +12,7 @@
 script = ExtResource("2_o2wsd")
 name = "Mangrove"
 water_type = 2
-fishes = Array[ExtResource("1_n0lsg")]([ExtResource("2_yfdox"), ExtResource("4_xgtna"), ExtResource("5_kwnp0"), ExtResource("6_kfvct"), ExtResource("7_borfb")])
+common_fishes = Array[ExtResource("1_n0lsg")]([ExtResource("2_yfdox"), ExtResource("4_xgtna"), ExtResource("7_borfb")])
+uncommon_fishes = Array[ExtResource("1_n0lsg")]([ExtResource("5_kwnp0")])
+rare_fishes = Array[ExtResource("1_n0lsg")]([ExtResource("6_kfvct")])
 metadata/_custom_type_script = "uid://btu548o85ss8l"

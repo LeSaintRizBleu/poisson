@@ -15,5 +15,7 @@
 script = ExtResource("2_kolgf")
 name = "Open ocean"
 water_temperature = 2
-fishes = Array[ExtResource("1_7cd3e")]([ExtResource("2_25hae"), ExtResource("3_h4h7e"), ExtResource("4_57ho6"), ExtResource("5_4oi3x"), ExtResource("6_dpspq"), ExtResource("7_cevh2"), ExtResource("8_du4nb"), ExtResource("9_h4h7e")])
+common_fishes = Array[ExtResource("1_7cd3e")]([ExtResource("3_h4h7e")])
+uncommon_fishes = Array[ExtResource("1_7cd3e")]([ExtResource("2_25hae"), ExtResource("8_du4nb")])
+rare_fishes = Array[ExtResource("1_7cd3e")]([ExtResource("4_57ho6"), ExtResource("5_4oi3x"), ExtResource("6_dpspq"), ExtResource("7_cevh2"), ExtResource("9_h4h7e")])
 metadata/_custom_type_script = "uid://btu548o85ss8l"

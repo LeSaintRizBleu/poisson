@@ -19,5 +19,7 @@
 [resource]
 script = ExtResource("2_oco5y")
 name = "Coral reef"
-fishes = Array[ExtResource("1_dki6r")]([ExtResource("2_ax4yp"), ExtResource("3_uro5w"), ExtResource("4_dn4mq"), ExtResource("5_30qjk"), ExtResource("6_lro3r"), ExtResource("7_qkmhs"), ExtResource("8_nd411"), ExtResource("9_av62n"), ExtResource("10_cnn01"), ExtResource("11_4sk17"), ExtResource("12_e7i3e"), ExtResource("13_15fbk"), ExtResource("14_uro5w")])
+common_fishes = Array[ExtResource("1_dki6r")]([ExtResource("3_uro5w"), ExtResource("4_dn4mq"), ExtResource("11_4sk17"), ExtResource("12_e7i3e"), ExtResource("14_uro5w")])
+uncommon_fishes = Array[ExtResource("1_dki6r")]([ExtResource("2_ax4yp"), ExtResource("6_lro3r"), ExtResource("7_qkmhs"), ExtResource("8_nd411"), ExtResource("10_cnn01"), ExtResource("13_15fbk")])
+rare_fishes = Array[ExtResource("1_dki6r")]([ExtResource("5_30qjk"), ExtResource("9_av62n")])
 metadata/_custom_type_script = "uid://btu548o85ss8l"
