@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Area" format=3 uid="uid://dq3mg57shxnsp"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_akox2"]
+[ext_resource type="Resource" uid="uid://cwf30wk4x8481" path="res://resources/fishesInfo/yellowfin_bream.tres" id="2_2q5wt"]
+[ext_resource type="Script" uid="uid://btu548o85ss8l" path="res://core/resources/Area.gd" id="2_i6xk6"]
+[ext_resource type="Resource" uid="uid://cldcpf5nbr07x" path="res://resources/fishesInfo/pinfish.tres" id="3_2q5wt"]
+
+[resource]
+script = ExtResource("2_i6xk6")
+name = "Lowland lake"
+water_type = 1
+water_temperature = 1
+fishes = Array[ExtResource("1_akox2")]([ExtResource("2_2q5wt"), ExtResource("3_2q5wt")])
+metadata/_custom_type_script = "uid://btu548o85ss8l"

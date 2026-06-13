@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Area" format=3 uid="uid://bvk3v5re7ponw"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_dki6r"]
+[ext_resource type="Resource" uid="uid://0yh71kbq6gyy" path="res://resources/fishesInfo/black_musselcracker.tres" id="2_ax4yp"]
+[ext_resource type="Script" uid="uid://btu548o85ss8l" path="res://core/resources/Area.gd" id="2_oco5y"]
+[ext_resource type="Resource" uid="uid://cmmc420ckbd21" path="res://resources/fishesInfo/blotched_picarel.tres" id="3_uro5w"]
+[ext_resource type="Resource" uid="uid://dkfvnx568yb5n" path="res://resources/fishesInfo/boops_boops.tres" id="4_dn4mq"]
+[ext_resource type="Resource" uid="uid://cgnh7f5gg5rax" path="res://resources/fishesInfo/bulldog_dentex.tres" id="5_30qjk"]
+[ext_resource type="Resource" uid="uid://jms8rpmrv2x" path="res://resources/fishesInfo/common_dentex.tres" id="6_lro3r"]
+[ext_resource type="Resource" uid="uid://b6hh64gojwvbj" path="res://resources/fishesInfo/red_porgy.tres" id="7_qkmhs"]
+[ext_resource type="Resource" uid="uid://dyp4tcr7qmqsa" path="res://resources/fishesInfo/red_seabream.tres" id="8_nd411"]
+[ext_resource type="Resource" uid="uid://cfxpg4joua5" path="res://resources/fishesInfo/red_steenbras.tres" id="9_av62n"]
+[ext_resource type="Resource" uid="uid://bc6vi4icqkiij" path="res://resources/fishesInfo/redbanded_seabream.tres" id="10_cnn01"]
+[ext_resource type="Resource" uid="uid://cu1l7oqx0th7k" path="res://resources/fishesInfo/salema_porgy.tres" id="11_4sk17"]
+[ext_resource type="Resource" uid="uid://skka7tryhstl" path="res://resources/fishesInfo/saucereye_porgy.tres" id="12_e7i3e"]
+[ext_resource type="Resource" uid="uid://ccx8r84dcyb23" path="res://resources/fishesInfo/sheepshead_porgy.tres" id="13_15fbk"]
+[ext_resource type="Resource" uid="uid://be6eow8c4600q" path="res://resources/fishesInfo/sheepshead.tres" id="14_uro5w"]
+
+[resource]
+script = ExtResource("2_oco5y")
+name = "Coral reef"
+fishes = Array[ExtResource("1_dki6r")]([ExtResource("2_ax4yp"), ExtResource("3_uro5w"), ExtResource("4_dn4mq"), ExtResource("5_30qjk"), ExtResource("6_lro3r"), ExtResource("7_qkmhs"), ExtResource("8_nd411"), ExtResource("9_av62n"), ExtResource("10_cnn01"), ExtResource("11_4sk17"), ExtResource("12_e7i3e"), ExtResource("13_15fbk"), ExtResource("14_uro5w")])
+metadata/_custom_type_script = "uid://btu548o85ss8l"

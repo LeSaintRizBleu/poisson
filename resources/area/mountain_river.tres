@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Area" format=3 uid="uid://b0bwe1msf1vay"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_2pd7y"]
+[ext_resource type="Script" uid="uid://btu548o85ss8l" path="res://core/resources/Area.gd" id="2_fqot8"]
+
+[resource]
+script = ExtResource("2_fqot8")
+name = "Mountain river"
+water_type = 1
+water_temperature = 2
+metadata/_custom_type_script = "uid://btu548o85ss8l"

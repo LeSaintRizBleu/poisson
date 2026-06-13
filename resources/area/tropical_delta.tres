@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Area" format=3 uid="uid://kqr773y4opwj"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_kehs1"]
+[ext_resource type="Script" uid="uid://btu548o85ss8l" path="res://core/resources/Area.gd" id="2_nsjuq"]
+[ext_resource type="Resource" uid="uid://cldcpf5nbr07x" path="res://resources/fishesInfo/pinfish.tres" id="2_vwbvx"]
+[ext_resource type="Resource" uid="uid://ccx8r84dcyb23" path="res://resources/fishesInfo/sheepshead_porgy.tres" id="5_ph7v7"]
+[ext_resource type="Resource" uid="uid://dvhqoywisrv6y" path="res://resources/fishesInfo/white_steenbras.tres" id="6_5xa0d"]
+[ext_resource type="Resource" uid="uid://cwf30wk4x8481" path="res://resources/fishesInfo/yellowfin_bream.tres" id="7_p8dxx"]
+
+[resource]
+script = ExtResource("2_nsjuq")
+name = "Tropical delta"
+water_type = 2
+fishes = Array[ExtResource("1_kehs1")]([ExtResource("2_vwbvx"), ExtResource("5_ph7v7"), ExtResource("6_5xa0d"), ExtResource("7_p8dxx")])
+metadata/_custom_type_script = "uid://btu548o85ss8l"

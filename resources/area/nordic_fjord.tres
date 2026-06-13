@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Area" format=3 uid="uid://bqkuxa6bebtsp"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_7mffw"]
+[ext_resource type="Script" uid="uid://btu548o85ss8l" path="res://core/resources/Area.gd" id="2_xm8wr"]
+
+[resource]
+script = ExtResource("2_xm8wr")
+name = "Nordic fjord"
+water_temperature = 3
+metadata/_custom_type_script = "uid://btu548o85ss8l"

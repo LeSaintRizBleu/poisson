@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Area" format=3 uid="uid://bhuinn01atkkt"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_3w4eq"]
+[ext_resource type="Script" uid="uid://btu548o85ss8l" path="res://core/resources/Area.gd" id="2_blxmk"]
+
+[resource]
+script = ExtResource("2_blxmk")
+name = "Deep sea trench"
+water_type = 3
+water_temperature = 4
+metadata/_custom_type_script = "uid://btu548o85ss8l"

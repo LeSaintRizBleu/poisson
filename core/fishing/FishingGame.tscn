@@ -6,7 +6,7 @@
 
 [node name="FishingGame" type="CanvasLayer" unique_id=1867221335]
 script = ExtResource("1_8vn2n")
-minigames = Array[PackedScene]([ExtResource("2_mlibj"), ExtResource("3_srre5")])
+minigames = Array[PackedScene]([ExtResource("3_srre5"), ExtResource("2_mlibj")])
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2053835099]
 anchors_preset = 15

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Area" format=3 uid="uid://j8u0mpyet1fl"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_7cd3e"]
+[ext_resource type="Resource" uid="uid://cmmc420ckbd21" path="res://resources/fishesInfo/blotched_picarel.tres" id="2_25hae"]
+[ext_resource type="Script" uid="uid://btu548o85ss8l" path="res://core/resources/Area.gd" id="2_kolgf"]
+[ext_resource type="Resource" uid="uid://dkfvnx568yb5n" path="res://resources/fishesInfo/boops_boops.tres" id="3_h4h7e"]
+[ext_resource type="Resource" uid="uid://jms8rpmrv2x" path="res://resources/fishesInfo/common_dentex.tres" id="4_57ho6"]
+[ext_resource type="Resource" uid="uid://b6hh64gojwvbj" path="res://resources/fishesInfo/red_porgy.tres" id="5_4oi3x"]
+[ext_resource type="Resource" uid="uid://dyp4tcr7qmqsa" path="res://resources/fishesInfo/red_seabream.tres" id="6_dpspq"]
+[ext_resource type="Resource" uid="uid://cfxpg4joua5" path="res://resources/fishesInfo/red_steenbras.tres" id="7_cevh2"]
+[ext_resource type="Resource" uid="uid://bt4peh58esk24" path="res://resources/fishesInfo/scup.tres" id="8_du4nb"]
+[ext_resource type="Resource" uid="uid://bc6vi4icqkiij" path="res://resources/fishesInfo/redbanded_seabream.tres" id="9_h4h7e"]
+
+[resource]
+script = ExtResource("2_kolgf")
+name = "Open ocean"
+water_temperature = 2
+fishes = Array[ExtResource("1_7cd3e")]([ExtResource("2_25hae"), ExtResource("3_h4h7e"), ExtResource("4_57ho6"), ExtResource("5_4oi3x"), ExtResource("6_dpspq"), ExtResource("7_cevh2"), ExtResource("8_du4nb"), ExtResource("9_h4h7e")])
+metadata/_custom_type_script = "uid://btu548o85ss8l"

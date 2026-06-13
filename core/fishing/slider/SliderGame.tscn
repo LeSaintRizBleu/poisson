@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://by46nm7dmma85"]
 
-[ext_resource type="Script" uid="uid://3i65lh5b7xj4" path="res://core/fishing/slider/SliderGame.gd" id="1_cq5jq"]
+[ext_resource type="Script" path="res://core/fishing/slider/SliderGame.gd" id="1_x3dlm"]
 [ext_resource type="PackedScene" uid="uid://d1wbtk4q35ftg" path="res://core/fishing/slider/Slider.tscn" id="2_6kii7"]
 
 [node name="FishingBar" type="MarginContainer" unique_id=2067772097]
@@ -12,7 +12,7 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 49
-script = ExtResource("1_cq5jq")
+script = ExtResource("1_x3dlm")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=364840480]
 custom_minimum_size = Vector2(30, 384)

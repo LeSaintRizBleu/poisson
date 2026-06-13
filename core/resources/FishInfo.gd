@@ -1,8 +1,7 @@
 class_name FishInfo
 extends Resource
 
-enum WATER_TYPE {SALTED, FRESH, BOTH, DEPTH}
-
+enum WATER_TYPE {SALT, FRESH, BRACKISH, ABYSSAL}
 
 ## name of the fish (have to be the same as the file name)
 @export var name: String

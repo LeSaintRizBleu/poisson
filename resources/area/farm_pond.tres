@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Area" format=3 uid="uid://bk06axxt3lmd6"]
+
+[ext_resource type="Script" uid="uid://c6xuvyeaaxd0g" path="res://core/resources/FishInfo.gd" id="1_6xn30"]
+[ext_resource type="Script" uid="uid://btu548o85ss8l" path="res://core/resources/Area.gd" id="2_0nk65"]
+
+[resource]
+script = ExtResource("2_0nk65")
+name = "Farm pond"
+water_type = 1
+water_temperature = 1
+metadata/_custom_type_script = "uid://btu548o85ss8l"

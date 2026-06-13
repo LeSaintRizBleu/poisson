@@ -22,7 +22,7 @@ var escape_popup: PackedScene = preload("res://core/ui/popup/EscapePopUp.tscn")
 var minigame: FishingMinigame
 
 func _ready() -> void:
-	var game: PackedScene =minigames.pick_random()
+	var game: PackedScene = minigames.pick_random()
 	minigame = game.instantiate()
 	minigame.success.connect(_on_success)
 	minigame.fail.connect(_on_fail)
@@ -53,7 +53,9 @@ func _process_energy(delta: float) -> void:
 
 func get_random_fish() -> String:
 	var fishes: Registry = load("res://resources/fishesInfo/fishes.tres")
+	var temp: Registry = load("res://resources/area/areas.tres")
 	print(fishes.get_all_string_ids())
+	print(temp.get_all_string_ids())
 	return fishes.get_all_string_ids().pick_random()
 
 func catch() -> void:
