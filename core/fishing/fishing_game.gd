@@ -12,26 +12,23 @@ var rate: float = 1.0
 var strength: float = 30.0
 var escape_rate: float = 10.0
 
-var fish_info: FishInfo
+var fish: FishInfo
 var is_pause: bool = false
 
 var catch_popup: PackedScene = preload("res://core/ui/popup/CatchPopUp.tscn")
 var escape_popup: PackedScene = preload("res://core/ui/popup/EscapePopUp.tscn")
 
 @export var minigames: Array[PackedScene]
+
 var minigame: FishingMinigame
 
 func _ready() -> void:
+	fish = Context.area.get_random_fish()
 	var game: PackedScene = minigames.pick_random()
 	minigame = game.instantiate()
 	minigame.success.connect(_on_success)
 	minigame.fail.connect(_on_fail)
 	game_container.add_child(minigame)
-
-	var fish: String = get_random_fish()
-	var url: String = "res://resources/fishesInfo/" + fish + ".tres"
-	fish_info = load(url)
-
 	minigame.start()
 
 func _process(delta: float) -> void:
@@ -50,19 +47,12 @@ func _process_energy(delta: float) -> void:
 	if capture >= 100:
 		catch()
 
-
-func get_random_fish() -> String:
-	var fishes: Registry = load("res://resources/fishesInfo/fishes.tres")
-	var temp: Registry = load("res://resources/area/areas.tres")
-	print(fishes.get_all_string_ids())
-	print(temp.get_all_string_ids())
-	return fishes.get_all_string_ids().pick_random()
-
 func catch() -> void:
 	minigame.stop()
 	is_pause = true
 	var instance: CatchPopUp = catch_popup.instantiate()
-	instance.fish_info = fish_info
+	instance.fish_info = fish
+	instance.rarity = Context.area.rarity
 	add_child(instance)
 
 func escape() -> void:

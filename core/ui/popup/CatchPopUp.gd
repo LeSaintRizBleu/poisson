@@ -7,9 +7,10 @@ class_name CatchPopUp
 var map_url: String = "res://core/map/Map.tscn"
 
 var fish_info: FishInfo
+var rarity: String
 
 func _ready() -> void:
-	description.text = "It's a " + fish_info.get_fish_name() + " !\n\n" + fish_info.get_description()
+	description.text = "It's a " + fish_info.get_fish_name() + " ! That's " + rarity + "\n\n" + fish_info.get_description()
 	apply_texture()
 
 func apply_texture() -> void:

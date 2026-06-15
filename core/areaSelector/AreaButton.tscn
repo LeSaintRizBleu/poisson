@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b64hwt6vu0a2j"]
+
+[ext_resource type="Script" uid="uid://qjr0x2yhg7h2" path="res://core/areaSelector/area_button.gd" id="1_0pj6i"]
+[ext_resource type="Texture2D" uid="uid://c7bv4eutgqekf" path="res://icon.svg" id="2_4pv14"]
+
+[node name="AreaButton" type="MarginContainer" unique_id=251780209]
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("1_0pj6i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1041617263]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1622456265]
+layout_mode = 2
+texture = ExtResource("2_4pv14")
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1429166977]
+layout_mode = 2
+text = "TEST"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1082650416]
+layout_mode = 2
+text = "Go to"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

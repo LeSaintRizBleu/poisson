@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bxkpw243brd3q"]
+
+[ext_resource type="Script" uid="uid://cnjbxkw7soysf" path="res://core/areaSelector/area_selector.gd" id="1_uirdm"]
+[ext_resource type="Script" uid="uid://btu548o85ss8l" path="res://core/resources/Area.gd" id="2_rtutd"]
+[ext_resource type="Resource" uid="uid://b2bnwb371vyjf" path="res://resources/area/mangrove.tres" id="3_m2lgh"]
+[ext_resource type="Resource" uid="uid://bk06axxt3lmd6" path="res://resources/area/farm_pond.tres" id="4_b5met"]
+[ext_resource type="Resource" uid="uid://bvk3v5re7ponw" path="res://resources/area/coral_reef.tres" id="5_ugbq0"]
+[ext_resource type="Resource" uid="uid://j8u0mpyet1fl" path="res://resources/area/open_ocean.tres" id="6_xo433"]
+[ext_resource type="Resource" uid="uid://bhuinn01atkkt" path="res://resources/area/deep_sea_trench.tres" id="7_fk5ym"]
+[ext_resource type="Resource" uid="uid://dq3mg57shxnsp" path="res://resources/area/lowland_lake.tres" id="8_6xwcg"]
+[ext_resource type="Resource" uid="uid://bqkuxa6bebtsp" path="res://resources/area/nordic_fjord.tres" id="9_teexv"]
+[ext_resource type="Resource" uid="uid://b0bwe1msf1vay" path="res://resources/area/mountain_river.tres" id="10_rwwyf"]
+[ext_resource type="Resource" uid="uid://kqr773y4opwj" path="res://resources/area/tropical_delta.tres" id="11_32oew"]
+
+[node name="AreaSelector" type="CanvasLayer" unique_id=1691252092]
+script = ExtResource("1_uirdm")
+areas = Array[ExtResource("2_rtutd")]([ExtResource("3_m2lgh"), ExtResource("4_b5met"), ExtResource("5_ugbq0"), ExtResource("6_xo433"), ExtResource("7_fk5ym"), ExtResource("8_6xwcg"), ExtResource("9_teexv"), ExtResource("10_rwwyf"), ExtResource("11_32oew")])
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=92941690]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer" unique_id=1574645156]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 10
+columns = 5

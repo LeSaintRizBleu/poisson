@@ -13,13 +13,17 @@ enum WATER_TEMPERATURE {WARM, TEMPERATE, COLD, GLACIAL, ABYSSAL}
 @export var uncommon_fishes: Array[FishInfo]
 @export var rare_fishes: Array[FishInfo]
 
+var rarity: String
 
 func get_random_fish() -> FishInfo:
 	var r: float = randf()
 	if r <= 0.6:
+		rarity = "Common"
 		return common_fishes.pick_random()
 	if r <= 0.9:
+		rarity = "Uncommon"
 		return uncommon_fishes.pick_random()
+	rarity = "Rare"
 	return rare_fishes.pick_random()
 
 
