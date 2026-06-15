@@ -19,13 +19,18 @@ func get_random_fish() -> FishInfo:
 	var r: float = randf()
 	if r <= 0.6:
 		rarity = "Common"
+		if common_fishes.is_empty(): return get_random_fish()
 		return common_fishes.pick_random()
 	if r <= 0.9:
 		rarity = "Uncommon"
+		if uncommon_fishes.is_empty(): return get_random_fish()
 		return uncommon_fishes.pick_random()
 	rarity = "Rare"
+	if rare_fishes.is_empty(): return get_random_fish()
 	return rare_fishes.pick_random()
 
+func is_empty() -> bool:
+	return common_fishes.is_empty() && uncommon_fishes.is_empty() && rare_fishes.is_empty()
 
 func get_label() -> String:
 	return name
